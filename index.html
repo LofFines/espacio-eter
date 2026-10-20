@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Políticas de Seguridad Web (CSP, Referrer-Policy, Permissions) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://loffines.github.io https://www.facebook.com; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://www.facebook.com https://connect.facebook.net; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com; frame-src https://www.google.com; connect-src https://www.facebook.com https://connect.facebook.net; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Espacio Éter | Empezá Pole Dance desde Cero en Ciudadela</title>
   <meta name="description" content="Clases de Pole Sport, Pole Coreo, Flexibilidad, Acro Integral y Entrenamiento Funcional en San Martín 39, Ciudadela. Grupos reducidos de máx. 8 alumnas." />
@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,800&family=Syne:wght@800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="pixel.js" defer></script>
   <style>
     :root {
       --rosa-galaxy: #e6007e;
@@ -93,6 +93,7 @@
       box-shadow: 0 10px 30px -5px rgba(0, 105, 180, 0.45);
     }
   </style>
+  <link rel="stylesheet" href="tailwind.min.css" />
 </head>
 <body class="bg-trama-estelar min-h-screen selection:bg-[#e6007e] selection:text-white pb-24">
 
@@ -518,7 +519,7 @@
           <span class="text-xs text-white/70 block">Turno seleccionado para consultar disponibilidad (Máx. 8 cupos / 4 barras):</span>
           <strong id="selectedScheduleLabel" class="text-sm sm:text-base text-[#ff66b8]">Lunes y Miércoles 19:00 hs — Pole Sport</strong>
         </div>
-        <a id="scheduleWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20web%20y%20quiero%20empezar%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela).%20Me%20interesa%20el%20horario%20de%20Lunes%20y%20Mi%C3%A9rcoles%2019%3A00%20hs%20%E2%80%94%20Pole%20Sport.%20%C2%BFQuedan%20cupos%3F" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-rosa transition text-center shrink-0">
+        <a id="scheduleWaBtn" data-wa-origen="grilla" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20web%20y%20quiero%20empezar%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela).%20Me%20interesa%20el%20horario%20de%20Lunes%20y%20Mi%C3%A9rcoles%2019%3A00%20hs%20%E2%80%94%20Pole%20Sport.%20%C2%BFQuedan%20cupos%3F" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-rosa transition text-center shrink-0">
           Consultar este horario por WhatsApp →
         </a>
       </div>
@@ -619,7 +620,7 @@
           </div>
         </div>
 
-        <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20anotarme%20al%20Pack%20Mensual%20de%20%2448.000%20con%20los%20Bonos%20de%20Bienvenida%20(incluyendo%20la%20clase%20de%20regalo%20de%20Flex/Funcional)%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-white hover:bg-pink-50 text-[#272250] font-akira text-sm py-4 px-5 rounded-2xl text-center transition shadow-lg block">
+        <a data-lead data-wa-origen="pack-mensual" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20anotarme%20al%20Pack%20Mensual%20de%20%2448.000%20con%20los%20Bonos%20de%20Bienvenida%20(incluyendo%20la%20clase%20de%20regalo%20de%20Flex/Funcional)%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-white hover:bg-pink-50 text-[#272250] font-akira text-sm py-4 px-5 rounded-2xl text-center transition shadow-lg block">
           QUIERO MI PACK + LOS 3 BONOS →
         </a>
       </div>
@@ -649,7 +650,7 @@
             </div>
           </div>
 
-          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20reservar%20una%20CLASE%20DE%20PRUEBA%20de%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-[#0069b4] hover:bg-[#0284c7] text-white font-bold text-sm py-3.5 px-5 rounded-2xl text-center transition shadow-azul block">
+          <a data-lead data-wa-origen="clase-prueba" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20reservar%20una%20CLASE%20DE%20PRUEBA%20de%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-[#0069b4] hover:bg-[#0284c7] text-white font-bold text-sm py-3.5 px-5 rounded-2xl text-center transition shadow-azul block">
             Agendar 1 Clase de Prueba →
           </a>
         </div>
@@ -664,7 +665,7 @@
               Podés armar tu pack combinando <strong>Pole Sport / Coreo</strong> con <strong>Flexibilidad, Acro Integral o Funcional</strong> en el mismo estudio.
             </p>
           </div>
-          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20consultar%20por%20un%20PACK%20COMBINADO%20(Pole%20%2B%20Flexibilidad%20o%20Funcional)%20en%20San%20Mart%C3%ADn%2039." target="_blank" rel="noopener noreferrer" class="mt-3 text-xs font-bold text-[#ff66b8] hover:text-white underline inline-flex items-center gap-1">
+          <a data-wa-origen="pack-combinado" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20consultar%20por%20un%20PACK%20COMBINADO%20(Pole%20%2B%20Flexibilidad%20o%20Funcional)%20en%20San%20Mart%C3%ADn%2039." target="_blank" rel="noopener noreferrer" class="mt-3 text-xs font-bold text-[#ff66b8] hover:text-white underline inline-flex items-center gap-1">
             Consultar promos por 2 o 3 actividades →
           </a>
         </div>
@@ -806,12 +807,22 @@
       <span class="text-[#0069b4]">✦</span>
     </div>
     <p>San Martín 39, Ciudadela • Pole Sport, Acrobacia y Entrenamiento sin Límites</p>
+    <p class="mt-2"><a href="privacidad.html" class="underline hover:text-white">Política de privacidad y cookies</a> · <button type="button" data-cookie-reset class="underline hover:text-white">Configurar cookies</button></p>
   </footer>
+
+  <!-- AVISO DE COOKIES (el Pixel de Meta solo carga si se acepta) -->
+  <div id="cookieBanner" class="hidden fixed bottom-20 left-3 right-3 z-[60] max-w-xl mx-auto rounded-2xl bg-[#272250] border border-white/20 p-4 text-xs text-white/90 shadow-lg" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <p>Usamos cookies de Meta (Pixel de Facebook/Instagram) para medir cuántas personas nos contactan desde los anuncios. Podés aceptarlas o rechazarlas. <a href="privacidad.html" class="underline">Más info</a>.</p>
+    <div class="mt-3 flex gap-2 justify-end">
+      <button type="button" data-cookie="rechazar" class="px-4 py-1.5 rounded-full border border-white/30">Rechazar</button>
+      <button type="button" data-cookie="aceptar" class="px-4 py-1.5 rounded-full bg-[#e6007e] font-bold">Aceptar</button>
+    </div>
+  </div>
 
   <!-- BOTÓN FLOTANTE STICKY WHATSAPP -->
   <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-gradient-to-t from-[#161332] via-[#161332]/95 to-transparent">
     <div class="max-w-md mx-auto">
-      <a id="stickyWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20de%20clases%20y%20quiero%20consultar%20cupos%20para%20empezar%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold py-3.5 px-6 rounded-2xl shadow-rosa flex items-center justify-between text-xs sm:text-sm border border-white/20 transition">
+      <a id="stickyWaBtn" data-wa-origen="sticky" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20de%20clases%20y%20quiero%20consultar%20cupos%20para%20empezar%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold py-3.5 px-6 rounded-2xl shadow-rosa flex items-center justify-between text-xs sm:text-sm border border-white/20 transition">
         <span class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>RESERVAR MI CUPO POR WHATSAPP</span>
@@ -822,125 +833,6 @@
   </div>
 
   <!-- MÓDULO ENCAPSULADO (IIFE) CON PROTECCIÓN ANTI-TAMPERING Y ANTI-XSS -->
-  <script>
-    (() => {
-      'use strict';
-
-      const CONFIG = Object.freeze({
-        WA_ORIGIN: 'https://wa.me/5491123978429',
-        ALLOWED_FILTERS: Object.freeze(['all', 'pole', 'complemento', 'baile'])
-      });
-
-      function toggleMyth(id) {
-        const safeId = String(id).replace(/[^0-9]/g, '');
-        const body = document.getElementById('myth-body-' + safeId);
-        const icon = document.getElementById('myth-icon-' + safeId);
-        if (!body || !icon) return;
-        if (body.classList.contains('hidden')) {
-          body.classList.remove('hidden');
-          icon.textContent = '−';
-        } else {
-          body.classList.add('hidden');
-          icon.textContent = '+';
-        }
-      }
-
-      function filterDiscipline(cat) {
-        if (!CONFIG.ALLOWED_FILTERS.includes(cat)) return;
-        const dayCards = document.querySelectorAll('.day-card');
-        CONFIG.ALLOWED_FILTERS.forEach(f => {
-          const btn = document.getElementById('filter-' + f);
-          if (!btn) return;
-          if (f === cat) {
-            btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#e6007e] text-white shadow-rosa transition';
-          } else {
-            btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition';
-          }
-        });
-
-        dayCards.forEach(card => {
-          const rows = card.querySelectorAll('.class-row');
-          let visibleCount = 0;
-          rows.forEach(row => {
-            const rowCats = (row.dataset.cat || '').split(' ');
-            if (cat === 'all' || rowCats.includes(cat)) {
-              row.classList.remove('hidden');
-              row.classList.add('flex');
-              visibleCount++;
-            } else {
-              row.classList.add('hidden');
-              row.classList.remove('flex');
-            }
-          });
-          if (visibleCount === 0) {
-            card.classList.add('hidden');
-            card.classList.remove('flex');
-          } else {
-            card.classList.remove('hidden');
-            card.classList.add('flex');
-          }
-        });
-      }
-
-      function selectClass(className) {
-        const cleanName = String(className || '').slice(0, 120);
-        const label = document.getElementById('selectedScheduleLabel');
-        const waBtn = document.getElementById('scheduleWaBtn');
-        const stickyBtn = document.getElementById('stickyWaBtn');
-        if (!label || !waBtn || !stickyBtn) return;
-
-        label.textContent = cleanName;
-        const msg = encodeURIComponent(
-          `Hola Espacio Éter! ✨ Vi la grilla de clases y quiero consultar cupos en San Martín 39 (Ciudadela) para el horario de: ${cleanName}. ¿Quedan lugares disponibles?`
-        );
-        const url = `${CONFIG.WA_ORIGIN}?text=${msg}`;
-        waBtn.setAttribute('href', url);
-        stickyBtn.setAttribute('href', url);
-
-        waBtn.classList.add('ring-4', 'ring-white/60');
-        setTimeout(() => waBtn.classList.remove('ring-4', 'ring-white/60'), 650);
-      }
-
-      // Delegación centralizada de eventos (sin atributos onclick inline)
-      document.addEventListener('click', (e) => {
-        const filterBtn = e.target.closest('[data-filter-cat]');
-        if (filterBtn) {
-          filterDiscipline(filterBtn.getAttribute('data-filter-cat'));
-          return;
-        }
-
-        const classBtn = e.target.closest('[data-select-class]');
-        if (classBtn) {
-          selectClass(classBtn.getAttribute('data-select-class'));
-          return;
-        }
-
-        const mythCard = e.target.closest('[data-toggle-myth]');
-        if (mythCard) {
-          toggleMyth(mythCard.getAttribute('data-toggle-myth'));
-          return;
-        }
-
-        const waLink = e.target.closest('a[href*="wa.me"]');
-        if (waLink) {
-          const href = waLink.getAttribute('href') || '';
-          // Protección Anti-Hijacking: verificar que siempre apunte al número oficial de Espacio Éter
-          if (!href.startsWith(CONFIG.WA_ORIGIN)) {
-            e.preventDefault();
-            window.open(CONFIG.WA_ORIGIN, '_blank', 'noopener,noreferrer');
-            return;
-          }
-          if (typeof window.fbq === 'function') {
-            window.fbq('track', 'Contact', {
-              content_name: document.getElementById('selectedScheduleLabel')?.textContent || 'Consulta General Espacio Éter',
-              content_category: 'Pole Sport Ciudadela',
-              value: 48000,
-              currency: 'ARS'
-            });
-          }
-        }
-      });
-    })();
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>
