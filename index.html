@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Políticas de Seguridad Web (CSP, Referrer-Policy, Permissions) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://loffines.github.io https://www.facebook.com; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://www.facebook.com https://connect.facebook.net; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests;" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Espacio Éter | Empezá Pole Dance desde Cero en Ciudadela</title>
   <meta name="description" content="Clases de Pole Sport, Pole Coreo, Flexibilidad, Acro Integral y Entrenamiento Funcional en San Martín 39, Ciudadela. Grupos reducidos de máx. 8 alumnas." />
   <meta property="og:type" content="website" />
@@ -10,9 +13,9 @@
   <meta property="og:title" content="Espacio Éter | Empezá Pole desde Cero en Ciudadela ✨" />
   <meta property="og:description" content="Mirá la grilla de horarios, cupos disponibles y el Pack de Bienvenida en San Martín 39, Ciudadela. ¡Reservá tu lugar por WhatsApp!" />
   <meta property="og:image" content="https://loffines.github.io/espacio-eter/salon-eter.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,800&family=Syne:wght@800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,800&family=Syne:wght@800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -161,7 +164,6 @@
       <div class="relative rounded-3xl overflow-hidden border-2 border-[#e6007e]/50 shadow-rosa bg-[#272250]">
         <div class="grid grid-cols-1 md:grid-cols-12 items-stretch">
           <div class="md:col-span-7 relative min-h-[290px] sm:min-h-[340px] grad-rosa-deep flex flex-col justify-between p-6 text-left overflow-hidden">
-            <!-- Foto real del salón de Espacio Éter con overlay de marca -->
             <img src="./salon-eter.jpg" alt="Salón Espacio Éter San Martín 39 Ciudadela" class="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-luminosity pointer-events-none" />
             <div class="absolute inset-0 bg-gradient-to-t from-[#161332] via-[#272250]/75 to-[#e6007e]/35 pointer-events-none"></div>
             <div class="absolute -right-6 -bottom-6 w-36 h-36 opacity-20 pointer-events-none spin-seal">
@@ -273,16 +275,16 @@
         </p>
 
         <div class="flex flex-wrap justify-center gap-2 mt-5">
-          <button onclick="filterDiscipline('all')" id="filter-all" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#e6007e] text-white shadow-rosa transition">
+          <button type="button" data-filter-cat="all" id="filter-all" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#e6007e] text-white shadow-rosa transition">
             Todas las Clases
           </button>
-          <button onclick="filterDiscipline('pole')" id="filter-pole" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
+          <button type="button" data-filter-cat="pole" id="filter-pole" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
             🔥 Pole Sport / Pole Coreo
           </button>
-          <button onclick="filterDiscipline('complemento')" id="filter-complemento" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
+          <button type="button" data-filter-cat="complemento" id="filter-complemento" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
             🧘‍♀️ Flexibilidad / Funcional / Acro
           </button>
-          <button onclick="filterDiscipline('baile')" id="filter-baile" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
+          <button type="button" data-filter-cat="baile" id="filter-baile" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
             💃 Salsa / Bachata / Infantil
           </button>
         </div>
@@ -295,7 +297,7 @@
             LUNES
           </div>
           <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
-            <button onclick="selectClass('Lunes 18:00 hs — Pole Sport Infantil')" data-cat="baile pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Lunes 18:00 hs — Pole Sport Infantil" data-cat="baile pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">18hs</strong>
                 <span class="uppercase font-medium text-white/90">POLE SPORT INFANTIL</span>
@@ -303,7 +305,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">Consultar cupo →</span>
             </button>
 
-            <button onclick="selectClass('Lunes 19:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Lunes 19:00 hs — Pole Sport" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
@@ -311,7 +313,7 @@
               <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Últimos lugares</span>
             </button>
 
-            <button onclick="selectClass('Lunes 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Lunes 19:00 hs — Entrenamiento Funcional" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
@@ -319,7 +321,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
             </button>
 
-            <button onclick="selectClass('Lunes 20:00 hs — Bachata')" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Lunes 20:00 hs — Bachata" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
                 <span class="uppercase font-medium text-white/90">BACHATA</span>
@@ -335,7 +337,7 @@
             MARTES
           </div>
           <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
-            <button onclick="selectClass('Martes 19:00 hs — Pole Coreo')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Martes 19:00 hs — Pole Coreo" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-bold text-[#ff66b8]">POLE COREO</span>
@@ -343,7 +345,7 @@
               <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Últimos 2 cupos</span>
             </button>
 
-            <button onclick="selectClass('Martes 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Martes 19:00 hs — Entrenamiento Funcional" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
@@ -351,7 +353,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
             </button>
 
-            <button onclick="selectClass('Martes 20:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Martes 20:00 hs — Pole Sport" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
                 <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
@@ -359,7 +361,7 @@
               <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Muy pedido</span>
             </button>
 
-            <button onclick="selectClass('Martes 20:00 hs — Acro Integral Adultos')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Martes 20:00 hs — Acro Integral Adultos" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
                 <span class="uppercase font-medium text-purple-300">ACRO INTEGRAL ADULTOS</span>
@@ -375,7 +377,7 @@
             MIÉRCOLES
           </div>
           <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
-            <button onclick="selectClass('Miércoles 19:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Miércoles 19:00 hs — Pole Sport" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
@@ -383,7 +385,7 @@
               <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Últimos lugares</span>
             </button>
 
-            <button onclick="selectClass('Miércoles 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Miércoles 19:00 hs — Entrenamiento Funcional" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
@@ -391,7 +393,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
             </button>
 
-            <button onclick="selectClass('Miércoles 20:00 hs — Salsa')" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Miércoles 20:00 hs — Salsa" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
                 <span class="uppercase font-medium text-white/90">SALSA</span>
@@ -418,7 +420,7 @@
             </div>
 
             <!-- Jueves 19hs Entrenamiento Funcional: Separado y Disponible -->
-            <button onclick="selectClass('Jueves 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Jueves 19:00 hs — Entrenamiento Funcional" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
@@ -426,7 +428,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Lugares libres →</span>
             </button>
 
-            <button onclick="selectClass('Jueves 20:00 hs — Flexibilidad')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Jueves 20:00 hs — Flexibilidad" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
                 <span class="uppercase font-semibold text-[#38bdf8]">FLEXIBILIDAD</span>
@@ -435,7 +437,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
             </button>
 
-            <button onclick="selectClass('Jueves 21:00 hs — Acro Integral Adultos')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Jueves 21:00 hs — Acro Integral Adultos" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">21hs</strong>
                 <span class="uppercase font-medium text-purple-300">ACRO INTEGRAL ADULTOS</span>
@@ -451,7 +453,7 @@
             VIERNES
           </div>
           <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
-            <button onclick="selectClass('Viernes 18:00 hs — Flexibilidad')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Viernes 18:00 hs — Flexibilidad" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">18hs</strong>
                 <span class="uppercase font-semibold text-[#38bdf8]">FLEXIBILIDAD</span>
@@ -459,7 +461,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
             </button>
 
-            <button onclick="selectClass('Viernes 19:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Viernes 19:00 hs — Pole Sport" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
                 <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
@@ -476,7 +478,7 @@
             SÁBADO
           </div>
           <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
-            <button onclick="selectClass('Sábado 10:30 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Sábado 10:30 hs — Pole Sport" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">10:30hs</strong>
                 <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
@@ -484,7 +486,7 @@
               <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">☀️ Ideal finde</span>
             </button>
 
-            <button onclick="selectClass('Sábado 10:30 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Sábado 10:30 hs — Entrenamiento Funcional" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">10:30hs</strong>
                 <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
@@ -492,7 +494,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
             </button>
 
-            <button onclick="selectClass('Sábado 11:30 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Sábado 11:30 hs — Pole Sport" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">11:30hs</strong>
                 <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
@@ -500,7 +502,7 @@
               <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
             </button>
 
-            <button onclick="selectClass('Sábado 11:30 hs — Acro Integral Infantil')" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+            <button type="button" data-select-class="Sábado 11:30 hs — Acro Integral Infantil" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
               <div>
                 <strong class="text-white font-bold text-sm sm:text-base mr-2">11:30hs</strong>
                 <span class="uppercase font-medium text-white/90">ACRO INTEGRAL INFANTIL</span>
@@ -516,7 +518,7 @@
           <span class="text-xs text-white/70 block">Turno seleccionado para consultar disponibilidad (Máx. 8 cupos / 4 barras):</span>
           <strong id="selectedScheduleLabel" class="text-sm sm:text-base text-[#ff66b8]">Lunes y Miércoles 19:00 hs — Pole Sport</strong>
         </div>
-        <a id="scheduleWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20web%20y%20quiero%20empezar%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela).%20Me%20interesa%20el%20horario%20de%20Lunes%20y%20Mi%C3%A9rcoles%2019%3A00%20hs%20%E2%80%94%20Pole%20Sport.%20%C2%BFQuedan%20cupos%3F" target="_blank" rel="noopener" class="w-full sm:w-auto bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-rosa transition text-center shrink-0">
+        <a id="scheduleWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20web%20y%20quiero%20empezar%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela).%20Me%20interesa%20el%20horario%20de%20Lunes%20y%20Mi%C3%A9rcoles%2019%3A00%20hs%20%E2%80%94%20Pole%20Sport.%20%C2%BFQuedan%20cupos%3F" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-rosa transition text-center shrink-0">
           Consultar este horario por WhatsApp →
         </a>
       </div>
@@ -617,7 +619,7 @@
           </div>
         </div>
 
-        <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20anotarme%20al%20Pack%20Mensual%20de%20%2448.000%20con%20los%20Bonos%20de%20Bienvenida%20(incluyendo%20la%20clase%20de%20regalo%20de%20Flex/Funcional)%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener" class="w-full bg-white hover:bg-pink-50 text-[#272250] font-akira text-sm py-4 px-5 rounded-2xl text-center transition shadow-lg block">
+        <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20anotarme%20al%20Pack%20Mensual%20de%20%2448.000%20con%20los%20Bonos%20de%20Bienvenida%20(incluyendo%20la%20clase%20de%20regalo%20de%20Flex/Funcional)%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-white hover:bg-pink-50 text-[#272250] font-akira text-sm py-4 px-5 rounded-2xl text-center transition shadow-lg block">
           QUIERO MI PACK + LOS 3 BONOS →
         </a>
       </div>
@@ -647,7 +649,7 @@
             </div>
           </div>
 
-          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20reservar%20una%20CLASE%20DE%20PRUEBA%20de%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener" class="w-full bg-[#0069b4] hover:bg-[#0284c7] text-white font-bold text-sm py-3.5 px-5 rounded-2xl text-center transition shadow-azul block">
+          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20reservar%20una%20CLASE%20DE%20PRUEBA%20de%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-[#0069b4] hover:bg-[#0284c7] text-white font-bold text-sm py-3.5 px-5 rounded-2xl text-center transition shadow-azul block">
             Agendar 1 Clase de Prueba →
           </a>
         </div>
@@ -662,7 +664,7 @@
               Podés armar tu pack combinando <strong>Pole Sport / Coreo</strong> con <strong>Flexibilidad, Acro Integral o Funcional</strong> en el mismo estudio.
             </p>
           </div>
-          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20consultar%20por%20un%20PACK%20COMBINADO%20(Pole%20%2B%20Flexibilidad%20o%20Funcional)%20en%20San%20Mart%C3%ADn%2039." target="_blank" rel="noopener" class="mt-3 text-xs font-bold text-[#ff66b8] hover:text-white underline inline-flex items-center gap-1">
+          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20consultar%20por%20un%20PACK%20COMBINADO%20(Pole%20%2B%20Flexibilidad%20o%20Funcional)%20en%20San%20Mart%C3%ADn%2039." target="_blank" rel="noopener noreferrer" class="mt-3 text-xs font-bold text-[#ff66b8] hover:text-white underline inline-flex items-center gap-1">
             Consultar promos por 2 o 3 actividades →
           </a>
         </div>
@@ -680,7 +682,7 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(1)">
+      <div data-toggle-myth="1" class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer">
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
             <span class="w-10 h-10 rounded-xl bg-[#e6007e]/20 border border-[#e6007e] flex items-center justify-center text-lg shrink-0">💪</span>
@@ -696,7 +698,7 @@
         </div>
       </div>
 
-      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(2)">
+      <div data-toggle-myth="2" class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer">
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
             <span class="w-10 h-10 rounded-xl bg-[#0069b4]/20 border border-[#0069b4] flex items-center justify-center text-lg shrink-0">🧘‍♀️</span>
@@ -712,7 +714,7 @@
         </div>
       </div>
 
-      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(3)">
+      <div data-toggle-myth="3" class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer">
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
             <span class="w-10 h-10 rounded-xl bg-[#613b7f]/40 border border-purple-400 flex items-center justify-center text-lg shrink-0">🤝</span>
@@ -728,7 +730,7 @@
         </div>
       </div>
 
-      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(4)">
+      <div data-toggle-myth="4" class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer">
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
             <span class="w-10 h-10 rounded-xl bg-[#e6007e]/20 border border-[#e6007e] flex items-center justify-center text-lg shrink-0">🔥</span>
@@ -763,7 +765,7 @@
             <p class="flex items-center gap-2"><span class="text-[#38bdf8]">💬</span> <strong>WhatsApp Directo:</strong> +54 9 11 2397-8429</p>
             <p class="flex items-center gap-2"><span class="text-purple-300">🤸‍♀️</span> <strong>Disciplinas:</strong> Pole Sport, Pole Coreo, Flexibilidad, Acro Integral, Funcional, Salsa y Bachata</p>
           </div>
-          <!-- Mapa interactivo de San Martín 39, Ciudadela -->
+          <!-- Mapa interactivo con atributo sandbox de seguridad -->
           <div class="rounded-2xl overflow-hidden border border-white/15 h-44">
             <iframe
               title="Mapa Espacio Éter San Martín 39 Ciudadela"
@@ -771,9 +773,9 @@
               width="100%"
               height="100%"
               style="border:0;"
-              allowfullscreen=""
+              sandbox="allow-scripts allow-same-origin allow-popups"
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
+              referrerpolicy="no-referrer">
             </iframe>
           </div>
         </div>
@@ -809,7 +811,7 @@
   <!-- BOTÓN FLOTANTE STICKY WHATSAPP -->
   <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-gradient-to-t from-[#161332] via-[#161332]/95 to-transparent">
     <div class="max-w-md mx-auto">
-      <a id="stickyWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20de%20clases%20y%20quiero%20consultar%20cupos%20para%20empezar%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener" class="w-full bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold py-3.5 px-6 rounded-2xl shadow-rosa flex items-center justify-between text-xs sm:text-sm border border-white/20 transition">
+      <a id="stickyWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20de%20clases%20y%20quiero%20consultar%20cupos%20para%20empezar%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener noreferrer" class="w-full bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold py-3.5 px-6 rounded-2xl shadow-rosa flex items-center justify-between text-xs sm:text-sm border border-white/20 transition">
         <span class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>RESERVAR MI CUPO POR WHATSAPP</span>
@@ -819,85 +821,126 @@
     </div>
   </div>
 
+  <!-- MÓDULO ENCAPSULADO (IIFE) CON PROTECCIÓN ANTI-TAMPERING Y ANTI-XSS -->
   <script>
-    function toggleMyth(id) {
-      const body = document.getElementById('myth-body-' + id);
-      const icon = document.getElementById('myth-icon-' + id);
-      if (body.classList.contains('hidden')) {
-        body.classList.remove('hidden');
-        icon.textContent = '−';
-      } else {
-        body.classList.add('hidden');
-        icon.textContent = '+';
-      }
-    }
+    (() => {
+      'use strict';
 
-    function filterDiscipline(cat) {
-      const dayCards = document.querySelectorAll('.day-card');
-      const filters = ['all', 'pole', 'complemento', 'baile'];
-      filters.forEach(f => {
-        const btn = document.getElementById('filter-' + f);
-        if (f === cat) {
-          btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#e6007e] text-white shadow-rosa transition';
-        } else {
-          btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition';
-        }
+      const CONFIG = Object.freeze({
+        WA_ORIGIN: 'https://wa.me/5491123978429',
+        ALLOWED_FILTERS: Object.freeze(['all', 'pole', 'complemento', 'baile'])
       });
 
-      dayCards.forEach(card => {
-        const rows = card.querySelectorAll('.class-row');
-        let visibleCount = 0;
-        rows.forEach(row => {
-          const rowCats = (row.dataset.cat || '').split(' ');
-          if (cat === 'all' || rowCats.includes(cat)) {
-            row.classList.remove('hidden');
-            row.classList.add('flex');
-            visibleCount++;
+      function toggleMyth(id) {
+        const safeId = String(id).replace(/[^0-9]/g, '');
+        const body = document.getElementById('myth-body-' + safeId);
+        const icon = document.getElementById('myth-icon-' + safeId);
+        if (!body || !icon) return;
+        if (body.classList.contains('hidden')) {
+          body.classList.remove('hidden');
+          icon.textContent = '−';
+        } else {
+          body.classList.add('hidden');
+          icon.textContent = '+';
+        }
+      }
+
+      function filterDiscipline(cat) {
+        if (!CONFIG.ALLOWED_FILTERS.includes(cat)) return;
+        const dayCards = document.querySelectorAll('.day-card');
+        CONFIG.ALLOWED_FILTERS.forEach(f => {
+          const btn = document.getElementById('filter-' + f);
+          if (!btn) return;
+          if (f === cat) {
+            btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#e6007e] text-white shadow-rosa transition';
           } else {
-            row.classList.add('hidden');
-            row.classList.remove('flex');
+            btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition';
           }
         });
-        if (visibleCount === 0) {
-          card.classList.add('hidden');
-          card.classList.remove('flex');
-        } else {
-          card.classList.remove('hidden');
-          card.classList.add('flex');
-        }
-      });
-    }
 
-    function selectClass(className) {
-      const label = document.getElementById('selectedScheduleLabel');
-      const waBtn = document.getElementById('scheduleWaBtn');
-      const stickyBtn = document.getElementById('stickyWaBtn');
-
-      label.textContent = className;
-      const msg = encodeURIComponent(
-        `Hola Espacio Éter! ✨ Vi la grilla de clases y quiero consultar cupos en San Martín 39 (Ciudadela) para el horario de: ${className}. ¿Quedan lugares disponibles?`
-      );
-      const url = `https://wa.me/5491123978429?text=${msg}`;
-      waBtn.href = url;
-      stickyBtn.href = url;
-
-      waBtn.classList.add('ring-4', 'ring-white/60');
-      setTimeout(() => waBtn.classList.remove('ring-4', 'ring-white/60'), 650);
-    }
-
-    // Tracking automático de conversiones hacia WhatsApp para Meta Pixel
-    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-      link.addEventListener('click', () => {
-        if (typeof window.fbq === 'function') {
-          window.fbq('track', 'Contact', {
-            content_name: document.getElementById('selectedScheduleLabel')?.textContent || 'Consulta General Espacio Éter',
-            content_category: 'Pole Sport Ciudadela',
-            value: 48000,
-            currency: 'ARS'
+        dayCards.forEach(card => {
+          const rows = card.querySelectorAll('.class-row');
+          let visibleCount = 0;
+          rows.forEach(row => {
+            const rowCats = (row.dataset.cat || '').split(' ');
+            if (cat === 'all' || rowCats.includes(cat)) {
+              row.classList.remove('hidden');
+              row.classList.add('flex');
+              visibleCount++;
+            } else {
+              row.classList.add('hidden');
+              row.classList.remove('flex');
+            }
           });
+          if (visibleCount === 0) {
+            card.classList.add('hidden');
+            card.classList.remove('flex');
+          } else {
+            card.classList.remove('hidden');
+            card.classList.add('flex');
+          }
+        });
+      }
+
+      function selectClass(className) {
+        const cleanName = String(className || '').slice(0, 120);
+        const label = document.getElementById('selectedScheduleLabel');
+        const waBtn = document.getElementById('scheduleWaBtn');
+        const stickyBtn = document.getElementById('stickyWaBtn');
+        if (!label || !waBtn || !stickyBtn) return;
+
+        label.textContent = cleanName;
+        const msg = encodeURIComponent(
+          `Hola Espacio Éter! ✨ Vi la grilla de clases y quiero consultar cupos en San Martín 39 (Ciudadela) para el horario de: ${cleanName}. ¿Quedan lugares disponibles?`
+        );
+        const url = `${CONFIG.WA_ORIGIN}?text=${msg}`;
+        waBtn.setAttribute('href', url);
+        stickyBtn.setAttribute('href', url);
+
+        waBtn.classList.add('ring-4', 'ring-white/60');
+        setTimeout(() => waBtn.classList.remove('ring-4', 'ring-white/60'), 650);
+      }
+
+      // Delegación centralizada de eventos (sin atributos onclick inline)
+      document.addEventListener('click', (e) => {
+        const filterBtn = e.target.closest('[data-filter-cat]');
+        if (filterBtn) {
+          filterDiscipline(filterBtn.getAttribute('data-filter-cat'));
+          return;
+        }
+
+        const classBtn = e.target.closest('[data-select-class]');
+        if (classBtn) {
+          selectClass(classBtn.getAttribute('data-select-class'));
+          return;
+        }
+
+        const mythCard = e.target.closest('[data-toggle-myth]');
+        if (mythCard) {
+          toggleMyth(mythCard.getAttribute('data-toggle-myth'));
+          return;
+        }
+
+        const waLink = e.target.closest('a[href*="wa.me"]');
+        if (waLink) {
+          const href = waLink.getAttribute('href') || '';
+          // Protección Anti-Hijacking: verificar que siempre apunte al número oficial de Espacio Éter
+          if (!href.startsWith(CONFIG.WA_ORIGIN)) {
+            e.preventDefault();
+            window.open(CONFIG.WA_ORIGIN, '_blank', 'noopener,noreferrer');
+            return;
+          }
+          if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Contact', {
+              content_name: document.getElementById('selectedScheduleLabel')?.textContent || 'Consulta General Espacio Éter',
+              content_category: 'Pole Sport Ciudadela',
+              value: 48000,
+              currency: 'ARS'
+            });
+          }
         }
       });
-    });
+    })();
   </script>
 </body>
 </html>
