@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es-AR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espacio Éter | Empezá Pole Dance desde Cero en Ciudadela</title>
+  <meta name="description" content="Clases de Pole Sport, Pole Coreo, Flexibilidad, Acro Integral y Entrenamiento Funcional en San Martín 39, Ciudadela. Grupos reducidos de máx. 8 alumnas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,800&family=Syne:wght@800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --rosa-galaxy: #e6007e;
+      --violeta-deep: #272250;
+      --violeta-star: #613b7f;
+      --azul-night: #0069b4;
+      --eter-dark: #161332;
+    }
+
+    body {
+      background-color: var(--eter-dark);
+      color: #ffffff;
+      font-family: 'Gotham', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .font-akira {
+      font-family: 'Akira Expanded', 'Syne', 'Montserrat', 'Arial Black', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-stretch: expanded;
+      line-height: 1.05;
+    }
+
+    .font-akira-outline {
+      font-family: 'Akira Expanded', 'Syne', 'Montserrat', 'Arial Black', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.75);
+      line-height: 1.05;
+    }
+
+    .font-logo {
+      font-family: 'TT Hoves Pro', 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .grad-rosa-deep {
+      background: linear-gradient(135deg, #e6007e 0%, #272250 100%);
+    }
+    .grad-deep-azul {
+      background: linear-gradient(135deg, #272250 0%, #0069b4 100%);
+    }
+    .grad-grilla-oficial {
+      background: linear-gradient(145deg, #005b9f 0%, #272250 42%, #613b7f 85%, #4a1c5c 100%);
+    }
+
+    .bg-trama-estelar {
+      background-color: var(--violeta-deep);
+      background-image: 
+        radial-gradient(circle at 12% 18%, rgba(0, 105, 180, 0.35) 0%, transparent 42%),
+        radial-gradient(circle at 88% 28%, rgba(230, 0, 126, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 50% 82%, rgba(97, 59, 127, 0.4) 0%, transparent 55%);
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-seal {
+      animation: spin-slow 22s linear infinite;
+    }
+
+    .shadow-rosa {
+      box-shadow: 0 10px 30px -5px rgba(230, 0, 126, 0.55);
+    }
+    .shadow-azul {
+      box-shadow: 0 10px 30px -5px rgba(0, 105, 180, 0.45);
+    }
+  </style>
+</head>
+<body class="bg-trama-estelar min-h-screen selection:bg-[#e6007e] selection:text-white pb-24">
+
+  <!-- BARRA SUPERIOR -->
+  <div class="bg-[#e6007e] text-white text-xs sm:text-sm font-bold py-2.5 px-4 text-center tracking-wide">
+    <span class="inline-flex items-center gap-1.5">
+      <span>✦</span>
+      <span>SAN MARTÍN 39, CIUDADELA • GRUPOS REDUCIDOS (4 BARRAS / MÁX. 8 ALUMNAS POR TURNO)</span>
+      <span>✦</span>
+    </span>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[#272250]/90 border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center p-1.5">
+          <svg viewBox="0 0 100 100" class="w-full h-full fill-white" aria-label="Isologo Espacio Éter">
+            <path d="M77 10 C77 20, 80 23, 90 23 C80 23, 77 26, 77 36 C77 26, 74 23, 64 23 C74 23, 77 20, 77 10 Z" />
+            <path d="M28 42 C38 22, 58 18, 68 28 C60 26, 48 30, 42 39 L62 45 L57 53 L37 47 C33 56, 39 66, 52 68 L47 77 C28 73, 19 58, 28 42 Z" />
+            <path d="M72 60 C62 80, 42 84, 32 74 C40 76, 52 72, 58 63 L38 57 L43 49 L63 55 C67 46, 61 36, 48 34 L53 25 C72 29, 81 44, 72 60 Z" opacity="0.92"/>
+          </svg>
+        </div>
+        <div class="leading-none">
+          <span class="block text-[10px] tracking-[0.28em] text-white/75 font-semibold uppercase">Espacio</span>
+          <span class="font-logo text-2xl text-white tracking-wider">ÉTER</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <a href="#value-stack" class="hidden sm:inline-flex bg-[#0069b4]/40 hover:bg-[#0069b4] border border-[#38bdf8]/40 text-white text-xs font-bold px-3.5 py-2 rounded-full transition">
+          🎁 Ver Pack + Bonos
+        </a>
+        <a href="#grilla" class="bg-[#e6007e] hover:bg-[#ff1a94] text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-rosa transition">
+          Grilla de Horarios ✦
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN 1: HERO DE IMPACTO -->
+  <section class="relative max-w-4xl mx-auto px-4 pt-8 pb-10 sm:pt-12 sm:pb-12">
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-[#0069b4]/35 border border-[#38bdf8]/50 rounded-full px-4 py-1.5 text-xs sm:text-sm font-bold text-white mb-5">
+        <span class="w-2 h-2 rounded-full bg-[#e6007e] animate-ping"></span>
+        <span>CLASES DESDE CERO • SAN MARTÍN 39, CIUDADELA</span>
+      </div>
+
+      <h1 class="font-akira text-3xl sm:text-5xl md:text-[52px] text-white tracking-wide mb-4">
+        EMPEZÁ <span class="text-[#e6007e]">POLE SPORT</span> AUNQUE NUNCA HAYAS TOCADO UNA BARRA
+      </h1>
+
+      <p class="text-base sm:text-xl text-white/90 font-medium leading-relaxed max-w-2xl mx-auto mb-6">
+        <strong class="font-bold text-white bg-[#e6007e]/30 px-1.5 py-0.5 rounded">La fuerza y la flexibilidad no son el requisito para entrar:</strong> son el resultado de venir a clase. Entrená en <strong>grupos súper reducidos (máximo 8 alumnas en 4 barras)</strong> donde la profe te sigue paso a paso.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-semibold text-white/90 mb-8">
+        <span class="bg-[#272250] border border-white/15 px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+          <span class="text-[#e6007e]">✦</span> Máx. 8 Alumnas por Turno (4 Barras)
+        </span>
+        <span class="bg-[#272250] border border-white/15 px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+          <span class="text-[#38bdf8]">✦</span> Sistema Dupla Activa (Descanso + Compañera)
+        </span>
+        <span class="bg-[#272250] border border-white/15 px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+          <span class="text-[#e6007e]">✦</span> Pole Sport • Coreo • Flex • Acro • Funcional
+        </span>
+      </div>
+
+      <div class="relative rounded-3xl overflow-hidden border-2 border-[#e6007e]/50 shadow-rosa bg-[#272250]">
+        <div class="grid grid-cols-1 md:grid-cols-12 items-stretch">
+          <div class="md:col-span-7 relative min-h-[290px] sm:min-h-[340px] grad-rosa-deep flex flex-col justify-between p-6 text-left overflow-hidden">
+            <!-- Foto real del salón de Espacio Éter con overlay de marca -->
+            <img src="./salon-eter.jpg" alt="Salón Espacio Éter San Martín 39 Ciudadela" class="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-luminosity pointer-events-none" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#161332] via-[#272250]/75 to-[#e6007e]/35 pointer-events-none"></div>
+            <div class="absolute -right-6 -bottom-6 w-36 h-36 opacity-20 pointer-events-none spin-seal">
+              <svg viewBox="0 0 200 200" class="w-full h-full">
+                <defs>
+                  <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                </defs>
+                <text fill="#ffffff" font-size="13.5" font-weight="800" letter-spacing="3.5">
+                  <textPath href="#circlePath">ESPACIO ÉTER • ESPACIO ÉTER • ESPACIO ÉTER •</textPath>
+                </text>
+              </svg>
+            </div>
+
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="bg-black/40 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">
+                📍 San Martín 39, Ciudadela
+              </span>
+              <span class="text-xs font-bold bg-[#0069b4] px-3 py-1 rounded-full">
+                4 Barras Profesionales
+              </span>
+            </div>
+
+            <div class="relative z-10 my-6">
+              <p class="font-akira text-xl sm:text-2xl text-white mb-2">
+                ¿POR QUÉ ENTRENAMOS DE A 2 POR BARRA EN NIVEL INICIAL?
+              </p>
+              <p class="text-xs sm:text-sm text-white/90 leading-relaxed">
+                Cuando empezás desde cero, tu piel y tus antebrazos necesitan <strong>micro-pausas de 60 segundos</strong> entre cada intento. Con el <strong>Sistema Dupla de Éter (2 compañeras por barra)</strong> tenés el descanso exacto para no sobrecargarte, se cuidan en las figuras, se graban los logros y <strong>entrar sola deja de dar vergüenza a los 2 minutos</strong>.
+              </p>
+            </div>
+
+            <div class="relative z-10 grid grid-cols-3 gap-2 pt-3 border-t border-white/20 text-center">
+              <div>
+                <p class="font-akira text-lg sm:text-xl text-white">4 BARRAS</p>
+                <p class="text-[11px] text-white/80">Salón espejado</p>
+              </div>
+              <div>
+                <p class="font-akira text-lg sm:text-xl text-white">MÁX. 8</p>
+                <p class="text-[11px] text-white/80">Cupos por clase</p>
+              </div>
+              <div>
+                <p class="font-akira text-lg sm:text-xl text-white">100%</p>
+                <p class="text-[11px] text-white/80">Seguimiento</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-5 bg-[#161332] p-6 text-left flex flex-col justify-between">
+            <div>
+              <h2 class="font-akira text-base sm:text-lg text-[#e6007e] mb-3">
+                LAS 3 ÚNICAS COSAS QUE NECESITÁS HOY:
+              </h2>
+              <ul class="space-y-3.5 text-sm">
+                <li class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-[#e6007e] text-white font-bold flex items-center justify-center shrink-0 text-xs mt-0.5">1</span>
+                  <div>
+                    <strong class="text-white block">Ganas de probar algo distinto</strong>
+                    <span class="text-white/70 text-xs">Si el gimnasio tradicional te aburre al segundo día, acá cada clase destrabás un giro o truco nuevo.</span>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-[#613b7f] text-white font-bold flex items-center justify-center shrink-0 text-xs mt-0.5">2</span>
+                  <div>
+                    <strong class="text-white block">Un short cómodo y musculosa</strong>
+                    <span class="text-white/70 text-xs">La piel de piernas y brazos permite adherirte al metal con total seguridad.</span>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-[#0069b4] text-white font-bold flex items-center justify-center shrink-0 text-xs mt-0.5">3</span>
+                  <div>
+                    <strong class="text-white block">Elegir tu día en la grilla</strong>
+                    <span class="text-white/70 text-xs">Al ser máximo 8 lugares por turno, reservamos tu lugar antes de que vengas.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#grilla" class="mt-6 w-full bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold py-3.5 px-5 rounded-xl text-center shadow-rosa transition flex items-center justify-center gap-2 text-sm">
+              <span>VER GRILLA DE CLASES</span>
+              <span>↓</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: GRILLA DE CLASES OFICIAL INTERACTIVA -->
+  <section id="grilla" class="max-w-4xl mx-auto px-4 py-8 scroll-mt-14">
+    <div class="grad-grilla-oficial rounded-3xl p-5 sm:p-8 border-2 border-[#0069b4]/80 shadow-azul relative overflow-hidden">
+
+      <svg class="absolute inset-0 w-full h-full opacity-15 pointer-events-none" viewBox="0 0 800 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M-100 100 C 200 200, 100 500, 400 600 C 600 680, 700 800, 900 850" stroke="#e6007e" stroke-width="3"/>
+        <path d="M-100 130 C 210 230, 110 530, 410 630 C 610 710, 710 830, 900 880" stroke="#e6007e" stroke-width="2.5"/>
+        <path d="M-100 160 C 220 260, 120 560, 420 660 C 620 740, 720 860, 900 910" stroke="#e6007e" stroke-width="2"/>
+        <path d="M-100 190 C 230 290, 130 590, 430 690 C 630 770, 730 890, 900 940" stroke="#0069b4" stroke-width="2"/>
+      </svg>
+
+      <div class="relative z-10 text-center mb-6">
+        <div class="inline-flex items-baseline justify-center gap-2 flex-wrap">
+          <span class="font-akira text-4xl sm:text-6xl text-white tracking-wider">GRILLA</span>
+          <span class="font-akira-outline text-2xl sm:text-4xl">DE</span>
+        </div>
+        <div class="font-akira-outline text-3xl sm:text-5xl -mt-2 sm:-mt-3 tracking-widest">
+          CLASES
+        </div>
+        <p class="text-xs sm:text-sm tracking-[0.35em] text-white/90 font-semibold uppercase mt-2">
+          ESPACIO ÉTER • TOCÁ UN HORARIO PARA RESERVAR TU CUPO
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-2 mt-5">
+          <button onclick="filterDiscipline('all')" id="filter-all" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#e6007e] text-white shadow-rosa transition">
+            Todas las Clases
+          </button>
+          <button onclick="filterDiscipline('pole')" id="filter-pole" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
+            🔥 Pole Sport / Pole Coreo
+          </button>
+          <button onclick="filterDiscipline('complemento')" id="filter-complemento" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
+            🧘‍♀️ Flexibilidad / Funcional / Acro
+          </button>
+          <button onclick="filterDiscipline('baile')" id="filter-baile" class="px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition">
+            💃 Salsa / Bachata / Infantil
+          </button>
+        </div>
+      </div>
+
+      <div class="relative z-10 space-y-4">
+        <!-- LUNES -->
+        <div class="day-card bg-[#1b173d]/90 backdrop-blur-sm border border-[#0069b4]/50 rounded-3xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div class="bg-[#0069b4] text-white font-logo text-base sm:text-lg px-6 py-2 rounded-full text-center sm:w-40 shrink-0 shadow">
+            LUNES
+          </div>
+          <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
+            <button onclick="selectClass('Lunes 18:00 hs — Pole Sport Infantil')" data-cat="baile pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">18hs</strong>
+                <span class="uppercase font-medium text-white/90">POLE SPORT INFANTIL</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">Consultar cupo →</span>
+            </button>
+
+            <button onclick="selectClass('Lunes 19:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
+              </div>
+              <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Últimos lugares</span>
+            </button>
+
+            <button onclick="selectClass('Lunes 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+
+            <button onclick="selectClass('Lunes 20:00 hs — Bachata')" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
+                <span class="uppercase font-medium text-white/90">BACHATA</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MARTES -->
+        <div class="day-card bg-[#1b173d]/90 backdrop-blur-sm border border-[#0069b4]/50 rounded-3xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div class="bg-[#0069b4] text-white font-logo text-base sm:text-lg px-6 py-2 rounded-full text-center sm:w-40 shrink-0 shadow">
+            MARTES
+          </div>
+          <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
+            <button onclick="selectClass('Martes 19:00 hs — Pole Coreo')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-bold text-[#ff66b8]">POLE COREO</span>
+              </div>
+              <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Últimos 2 cupos</span>
+            </button>
+
+            <button onclick="selectClass('Martes 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+
+            <button onclick="selectClass('Martes 20:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
+                <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
+              </div>
+              <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Muy pedido</span>
+            </button>
+
+            <button onclick="selectClass('Martes 20:00 hs — Acro Integral Adultos')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
+                <span class="uppercase font-medium text-purple-300">ACRO INTEGRAL ADULTOS</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MIÉRCOLES -->
+        <div class="day-card bg-[#1b173d]/90 backdrop-blur-sm border border-[#0069b4]/50 rounded-3xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div class="bg-[#0069b4] text-white font-logo text-base sm:text-lg px-6 py-2 rounded-full text-center sm:w-40 shrink-0 shadow">
+            MIÉRCOLES
+          </div>
+          <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
+            <button onclick="selectClass('Miércoles 19:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
+              </div>
+              <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Últimos lugares</span>
+            </button>
+
+            <button onclick="selectClass('Miércoles 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+
+            <button onclick="selectClass('Miércoles 20:00 hs — Salsa')" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
+                <span class="uppercase font-medium text-white/90">SALSA</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- JUEVES -->
+        <div class="day-card bg-[#1b173d]/90 backdrop-blur-sm border border-[#0069b4]/50 rounded-3xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div class="bg-[#0069b4] text-white font-logo text-base sm:text-lg px-6 py-2 rounded-full text-center sm:w-40 shrink-0 shadow">
+            JUEVES
+          </div>
+          <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
+            <!-- Jueves 19hs Pole Sport: LLENO / CUPOS AGOTADOS -->
+            <div data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between rounded-lg bg-red-950/25 opacity-70 cursor-not-allowed text-left">
+              <div>
+                <strong class="text-white/60 font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-bold text-white/55 line-through">POLE SPORT</span>
+                <span class="text-[11px] text-red-300 ml-1.5 font-semibold">(4 barras completas)</span>
+              </div>
+              <span class="text-[11px] font-bold bg-red-500/25 text-red-300 border border-red-400/50 px-2.5 py-0.5 rounded-full shrink-0">🔴 CUPOS AGOTADOS</span>
+            </div>
+
+            <!-- Jueves 19hs Entrenamiento Funcional: Separado y Disponible -->
+            <button onclick="selectClass('Jueves 19:00 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Lugares libres →</span>
+            </button>
+
+            <button onclick="selectClass('Jueves 20:00 hs — Flexibilidad')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">20hs</strong>
+                <span class="uppercase font-semibold text-[#38bdf8]">FLEXIBILIDAD</span>
+                <span class="text-[11px] text-white/60 ml-1">(Ideal complemento p/ Pole)</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+
+            <button onclick="selectClass('Jueves 21:00 hs — Acro Integral Adultos')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">21hs</strong>
+                <span class="uppercase font-medium text-purple-300">ACRO INTEGRAL ADULTOS</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- VIERNES -->
+        <div class="day-card bg-[#1b173d]/90 backdrop-blur-sm border border-[#0069b4]/50 rounded-3xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div class="bg-[#0069b4] text-white font-logo text-base sm:text-lg px-6 py-2 rounded-full text-center sm:w-40 shrink-0 shadow">
+            VIERNES
+          </div>
+          <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
+            <button onclick="selectClass('Viernes 18:00 hs — Flexibilidad')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">18hs</strong>
+                <span class="uppercase font-semibold text-[#38bdf8]">FLEXIBILIDAD</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+
+            <button onclick="selectClass('Viernes 19:00 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">19hs</strong>
+                <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
+                <span class="text-[11px] text-white/65 ml-1">(Ideal si arrancás de cero)</span>
+              </div>
+              <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">🔥 Últimos 2 cupos</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SÁBADO -->
+        <div class="day-card bg-[#1b173d]/90 backdrop-blur-sm border border-[#0069b4]/50 rounded-3xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div class="bg-[#0069b4] text-white font-logo text-base sm:text-lg px-6 py-2 rounded-full text-center sm:w-40 shrink-0 shadow">
+            SÁBADO
+          </div>
+          <div class="flex-1 divide-y divide-[#0069b4]/40 text-xs sm:text-sm">
+            <button onclick="selectClass('Sábado 10:30 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">10:30hs</strong>
+                <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
+              </div>
+              <span class="text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full shrink-0">☀️ Ideal finde</span>
+            </button>
+
+            <button onclick="selectClass('Sábado 10:30 hs — Entrenamiento Funcional')" data-cat="complemento" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">10:30hs</strong>
+                <span class="uppercase font-semibold text-[#38bdf8]">ENTRENAMIENTO FUNCIONAL</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+
+            <button onclick="selectClass('Sábado 11:30 hs — Pole Sport')" data-cat="pole" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">11:30hs</strong>
+                <span class="uppercase font-bold text-[#ff66b8]">POLE SPORT</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">🟢 Disponible →</span>
+            </button>
+
+            <button onclick="selectClass('Sábado 11:30 hs — Acro Integral Infantil')" data-cat="baile" class="class-row w-full py-2.5 px-2 flex items-center justify-between hover:bg-white/5 rounded-lg transition text-left">
+              <div>
+                <strong class="text-white font-bold text-sm sm:text-base mr-2">11:30hs</strong>
+                <span class="uppercase font-medium text-white/90">ACRO INTEGRAL INFANTIL</span>
+              </div>
+              <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full shrink-0">Consultar cupo →</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative z-10 mt-6 bg-[#161332] border-2 border-[#e6007e] rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-rosa">
+        <div class="text-center sm:text-left">
+          <span class="text-xs text-white/70 block">Turno seleccionado para consultar disponibilidad (Máx. 8 cupos / 4 barras):</span>
+          <strong id="selectedScheduleLabel" class="text-sm sm:text-base text-[#ff66b8]">Lunes y Miércoles 19:00 hs — Pole Sport</strong>
+        </div>
+        <a id="scheduleWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20web%20y%20quiero%20empezar%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela).%20Me%20interesa%20el%20horario%20de%20Lunes%20y%20Mi%C3%A9rcoles%2019%3A00%20hs%20%E2%80%94%20Pole%20Sport.%20%C2%BFQuedan%20cupos%3F" target="_blank" rel="noopener" class="w-full sm:w-auto bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-rosa transition text-center shrink-0">
+          Consultar este horario por WhatsApp →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: EL "VALUE STACK" PROPIO DE ESPACIO ÉTER -->
+  <section id="value-stack" class="max-w-4xl mx-auto px-4 py-10 scroll-mt-14">
+    <div class="text-center mb-7">
+      <span class="text-xs font-bold tracking-widest uppercase text-[#e6007e] block mb-1">✦ EL MÉTODO "PRIMERA VEZ" DE ESPACIO ÉTER ✦</span>
+      <h2 class="font-akira text-2xl sm:text-4xl text-white">
+        NO PAGÁS "SOLO CLASES": LLEVATE EL PACK DE BIENVENIDA COMPLETO
+      </h2>
+      <p class="text-sm text-white/80 mt-2 max-w-2xl mx-auto">
+        Armamos este paquete exclusivo para alumnas que empiezan de cero en Ciudadela, para que vengas con confianza, progreses rápido y no pierdas ninguna clase:
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+      <div class="md:col-span-7 grad-rosa-deep rounded-3xl p-6 sm:p-7 border-2 border-[#e6007e] shadow-rosa flex flex-col justify-between relative">
+        <div class="absolute -top-3.5 right-6 bg-white text-[#272250] font-akira text-[11px] px-3.5 py-1 rounded-full shadow">
+          ✦ PACK BIENVENIDA ÉTER ✦
+        </div>
+
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-white/85">Todo lo que incluye tu inscripción este mes:</span>
+          <h3 class="font-akira text-xl sm:text-2xl text-white mt-1 mb-4">
+            EXPERIENCIA INICIAL ESPACIO ÉTER
+          </h3>
+
+          <div class="space-y-3 text-xs sm:text-sm mb-6">
+            <div class="bg-[#161332]/85 p-3.5 rounded-2xl border border-white/15 flex items-start justify-between gap-3">
+              <div class="flex items-start gap-2.5">
+                <span class="text-[#e6007e] font-bold text-base mt-0.5">✦</span>
+                <div>
+                  <strong class="text-white block">1. Cupo Fijo en Grupo Reducido (4 Barras / Máx. 8 Alumnas)</strong>
+                  <span class="text-white/75 text-xs">Modalidad Dupla Activa: seguimiento personalizado de la profe y progresión a tu propio ritmo desde la clase 1.</span>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-white/90 bg-white/10 px-2.5 py-1 rounded-lg shrink-0">$48.000</span>
+            </div>
+
+            <div class="bg-[#161332]/85 p-3.5 rounded-2xl border border-[#38bdf8]/40 flex items-start justify-between gap-3">
+              <div class="flex items-start gap-2.5">
+                <span class="text-[#38bdf8] font-bold text-base mt-0.5">🎁</span>
+                <div>
+                  <strong class="text-[#38bdf8] block">BONO #1: 1 Clase Complementaria de Regalo (Flexibilidad o Funcional)</strong>
+                  <span class="text-white/75 text-xs">En tu primer mes podés probar sin cargo 1 clase de <strong>Flexibilidad</strong> (Jueves 20hs / Viernes 18hs) o <strong>Funcional</strong> para acelerar tu fuerza y elongación en la barra.</span>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="block text-[10px] line-through text-white/50">Valor $10.000</span>
+                <span class="text-xs font-bold text-emerald-300">BONIFICADO</span>
+              </div>
+            </div>
+
+            <div class="bg-[#161332]/85 p-3.5 rounded-2xl border border-white/15 flex items-start justify-between gap-3">
+              <div class="flex items-start gap-2.5">
+                <span class="text-purple-300 font-bold text-base mt-0.5">🎁</span>
+                <div>
+                  <strong class="text-white block">BONO #2: Seguro de Asistencia "Cero Clases Perdidas"</strong>
+                  <span class="text-white/75 text-xs">Tenés Pole de Lunes a Sábado. Si una semana te surge un imprevisto y avisás con anticipación, <strong>recuperás tu clase en cualquiera de los otros turnos</strong> dentro del mes.</span>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="block text-[10px] line-through text-white/50">Valor $12.000</span>
+                <span class="text-xs font-bold text-emerald-300">INCLUIDO</span>
+              </div>
+            </div>
+
+            <div class="bg-[#161332]/85 p-3.5 rounded-2xl border border-white/15 flex items-start justify-between gap-3">
+              <div class="flex items-start gap-2.5">
+                <span class="text-[#e6007e] font-bold text-base mt-0.5">🎁</span>
+                <div>
+                  <strong class="text-white block">BONO #3: Guía WhatsApp "Primera Clase sin Miedo" + Registro de tu 1° Giro</strong>
+                  <span class="text-white/75 text-xs">Checklist previo a venir (qué ropa traer, preparación de la piel sin cremas) + te ayudamos a grabar tu primera figura lograda para que veas tu avance mes a mes.</span>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="block text-[10px] line-through text-white/50">Valor $8.000</span>
+                <span class="text-xs font-bold text-emerald-300">GRATIS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-black/35 rounded-2xl p-4 border border-white/20 mb-4">
+          <div class="flex items-center justify-between text-xs text-white/75 mb-1">
+            <span>Valor total del Pack + los 3 Bonos:</span>
+            <span class="line-through font-bold">$78.000 ARS</span>
+          </div>
+          <div class="flex items-baseline justify-between">
+            <span class="font-bold text-sm sm:text-base text-white">Inversión Mensual Alumna Nueva:</span>
+            <div class="text-right">
+              <span class="font-akira text-3xl sm:text-4xl text-white">$48.000</span>
+              <span class="text-xs text-white/80 block">por mes (Todo incluido)</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20anotarme%20al%20Pack%20Mensual%20de%20%2448.000%20con%20los%20Bonos%20de%20Bienvenida%20(incluyendo%20la%20clase%20de%20regalo%20de%20Flex/Funcional)%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener" class="w-full bg-white hover:bg-pink-50 text-[#272250] font-akira text-sm py-4 px-5 rounded-2xl text-center transition shadow-lg block">
+          QUIERO MI PACK + LOS 3 BONOS →
+        </a>
+      </div>
+
+      <div class="md:col-span-5 flex flex-col gap-5 justify-between">
+        <div class="bg-[#272250] rounded-3xl p-6 border border-white/20 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="inline-block bg-[#0069b4]/30 border border-[#0069b4] text-[#38bdf8] text-xs font-bold px-3 py-1 rounded-full mb-2">
+              ¿Querés probar primero?
+            </span>
+            <h3 class="font-akira text-xl text-white mt-1">
+              CLASE DE PRUEBA "PRIMERA VEZ"
+            </h3>
+            <p class="text-xs sm:text-sm text-white/80 mt-2 leading-relaxed">
+              Si querés conocer el salón de <strong>San Martín 39</strong>, conocer a las profes y vivir la experiencia antes de pagar el mes:
+            </p>
+
+            <div class="my-4 p-3.5 rounded-2xl bg-[#161332] border border-white/10 space-y-2 text-xs sm:text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-[#e6007e] font-bold">✓</span>
+                <span>Entrenás 60 min en grupo reducido (máx. 8 alumnas).</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#38bdf8] font-bold">★</span>
+                <span><strong class="text-white">Garantía Éter:</strong> Si al terminar tu clase de prueba te anotás al Pack Mensual, <strong>te bonificamos/descontamos la seña de tu cuota del mes</strong>.</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20reservar%20una%20CLASE%20DE%20PRUEBA%20de%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener" class="w-full bg-[#0069b4] hover:bg-[#0284c7] text-white font-bold text-sm py-3.5 px-5 rounded-2xl text-center transition shadow-azul block">
+            Agendar 1 Clase de Prueba →
+          </a>
+        </div>
+
+        <div class="bg-[#161332] rounded-3xl p-5 border border-[#613b7f] flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300">✦ POTENCIÁ TU AVANCE ✦</span>
+            <h4 class="font-akira text-base text-white mt-0.5">
+              ¿QUERÉS COMBINAR POLE + FLEXIBILIDAD O ACRO?
+            </h4>
+            <p class="text-xs text-white/75 mt-1.5 leading-relaxed">
+              Podés armar tu pack combinando <strong>Pole Sport / Coreo</strong> con <strong>Flexibilidad, Acro Integral o Funcional</strong> en el mismo estudio.
+            </p>
+          </div>
+          <a href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Quiero%20consultar%20por%20un%20PACK%20COMBINADO%20(Pole%20%2B%20Flexibilidad%20o%20Funcional)%20en%20San%20Mart%C3%ADn%2039." target="_blank" rel="noopener" class="mt-3 text-xs font-bold text-[#ff66b8] hover:text-white underline inline-flex items-center gap-1">
+            Consultar promos por 2 o 3 actividades →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: ROMPE-MITOS -->
+  <section class="max-w-4xl mx-auto px-4 py-6">
+    <div class="text-center mb-6">
+      <span class="text-xs font-bold tracking-widest uppercase text-[#38bdf8] block mb-1">✦ DERRIBANDO MITOS ANTES DE EMPEZAR ✦</span>
+      <h2 class="font-akira text-2xl sm:text-3xl text-white">
+        ¿ALGUNA DE ESTAS IDEAS TE FRENA?
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(1)">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-[#e6007e]/20 border border-[#e6007e] flex items-center justify-center text-lg shrink-0">💪</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#e6007e]">Mito #1</span>
+              <h3 class="font-bold text-base text-white">"No tengo fuerza en los brazos"</h3>
+            </div>
+          </div>
+          <span id="myth-icon-1" class="text-[#e6007e] font-bold text-xl">−</span>
+        </div>
+        <div id="myth-body-1" class="mt-3 pt-3 border-t border-white/10 text-xs sm:text-sm text-white/85 leading-relaxed">
+          El <strong>90% de las chicas</strong> empieza sin fuerza de brazos. En las primeras clases aprendés agarres técnicos, caminatas y giros desde el piso mientras construís fuerza progresivamente. Y si querés acelerar, tenés <strong>Entrenamiento Funcional</strong> en los mismos horarios.
+        </div>
+      </div>
+
+      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(2)">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-[#0069b4]/20 border border-[#0069b4] flex items-center justify-center text-lg shrink-0">🧘‍♀️</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#38bdf8]">Mito #2</span>
+              <h3 class="font-bold text-base text-white">"Soy de madera / No tengo elongación"</h3>
+            </div>
+          </div>
+          <span id="myth-icon-2" class="text-[#38bdf8] font-bold text-xl">−</span>
+        </div>
+        <div id="myth-body-2" class="mt-3 pt-3 border-t border-white/10 text-xs sm:text-sm text-white/85 leading-relaxed">
+          Nadie entra sabiendo abrirse de piernas. Cada clase tiene entrada en calor y elongación adaptada, y además con tu Pack de Bienvenida tenés <strong>1 clase bonificada de Flexibilidad (Jueves 20hs o Viernes 18hs)</strong> para soltar el cuerpo desde cero.
+        </div>
+      </div>
+
+      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(3)">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-[#613b7f]/40 border border-purple-400 flex items-center justify-center text-lg shrink-0">🤝</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300">Mito #3</span>
+              <h3 class="font-bold text-base text-white">"Me da vergüenza ir sola o compartir barra"</h3>
+            </div>
+          </div>
+          <span id="myth-icon-3" class="text-purple-300 font-bold text-xl">−</span>
+        </div>
+        <div id="myth-body-3" class="mt-3 pt-3 border-t border-white/10 text-xs sm:text-sm text-white/85 leading-relaxed">
+          Justamente por eso nuestro sistema de <strong>4 barras (2 compañeras por barra)</strong> es tan querido por las principiantes: mientras una prueba el giro, la otra descansa la piel, se alientan y rompen el hielo al instante. ¡Entrás sola y en la primera clase ya tenés compañera!
+        </div>
+      </div>
+
+      <div class="bg-[#272250] border border-white/15 hover:border-[#e6007e] rounded-2xl p-5 transition cursor-pointer" onclick="toggleMyth(4)">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-[#e6007e]/20 border border-[#e6007e] flex items-center justify-center text-lg shrink-0">🔥</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#e6007e]">Mito #4</span>
+              <h3 class="font-bold text-base text-white">"En el gimnasio me aburro y abandono"</h3>
+            </div>
+          </div>
+          <span id="myth-icon-4" class="text-[#e6007e] font-bold text-xl">−</span>
+        </div>
+        <div id="myth-body-4" class="mt-3 pt-3 border-t border-white/10 text-xs sm:text-sm text-white/85 leading-relaxed">
+          En Pole no contás repeticiones mirando el techo: cada semana destrabás una figura nueva, una subida o una coreo en <strong>Pole Coreo (Martes 19hs)</strong>. Esa motivación hace que sea tu momento favorito de la semana.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: UBICACIÓN -->
+  <section class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-[#161332] border border-white/15 rounded-3xl p-6 sm:p-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#e6007e]">✦ DÓNDE ESTAMOS ✦</span>
+          <h2 class="font-akira text-2xl text-white mt-1 mb-3">
+            SAN MARTÍN 39, CIUDADELA
+          </h2>
+          <p class="text-xs sm:text-sm text-white/80 leading-relaxed mb-4">
+            A metros de Av. Rivadavia y de la Estación Ciudadela del Tren Sarmiento. Súper accesible desde Ciudadela, Ramos Mejía, Liniers, Caseros y Versalles.
+          </p>
+          <div class="space-y-2 text-xs sm:text-sm text-white/90 mb-4">
+            <p class="flex items-center gap-2"><span class="text-[#e6007e]">📍</span> <strong>Dirección:</strong> San Martín 39, Ciudadela</p>
+            <p class="flex items-center gap-2"><span class="text-[#38bdf8]">💬</span> <strong>WhatsApp Directo:</strong> +54 9 11 2397-8429</p>
+            <p class="flex items-center gap-2"><span class="text-purple-300">🤸‍♀️</span> <strong>Disciplinas:</strong> Pole Sport, Pole Coreo, Flexibilidad, Acro Integral, Funcional, Salsa y Bachata</p>
+          </div>
+          <!-- Mapa interactivo de San Martín 39, Ciudadela -->
+          <div class="rounded-2xl overflow-hidden border border-white/15 h-44">
+            <iframe
+              title="Mapa Espacio Éter San Martín 39 Ciudadela"
+              src="https://www.google.com/maps?q=San+Martin+39,+Ciudadela,+Provincia+de+Buenos+Aires,+Argentina&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="bg-[#272250] p-4 rounded-2xl border border-white/10">
+            <h4 class="font-bold text-sm text-white mb-1">¿Qué llevo a mi primera clase de Pole?</h4>
+            <p class="text-xs text-white/75">Un short corto (tipo calza corta), musculosa o top deportivo, botellita de agua y una toalla pequeña. Entrenamos descalzas o en medias.</p>
+          </div>
+          <div class="bg-[#272250] p-4 rounded-2xl border border-white/10">
+            <h4 class="font-bold text-sm text-white mb-1">¿Por qué no hay que ponerse crema ese día?</h4>
+            <p class="text-xs text-white/75">Las cremas corporales dejan una película resbaladiza sobre el metal. Venir con la piel limpia y sin crema te asegura un agarre firme desde el primer giro.</p>
+          </div>
+          <div class="bg-[#272250] p-4 rounded-2xl border border-white/10">
+            <h4 class="font-bold text-sm text-white mb-1">¿Puedo ir si nunca hice acrobacia ni danza?</h4>
+            <p class="text-xs text-white/75">¡Sí! Todas las clases se adaptan a tu nivel desde el primer día. Empezás con giros y figuras desde el piso y avanzás a tu propio ritmo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-4xl mx-auto px-4 pt-6 pb-12 text-center text-xs text-white/50">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <span class="text-[#e6007e]">✦</span>
+      <span class="font-logo text-base text-white tracking-wider">ESPACIO ÉTER</span>
+      <span class="text-[#0069b4]">✦</span>
+    </div>
+    <p>San Martín 39, Ciudadela • Pole Sport, Acrobacia y Entrenamiento sin Límites</p>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE STICKY WHATSAPP -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-gradient-to-t from-[#161332] via-[#161332]/95 to-transparent">
+    <div class="max-w-md mx-auto">
+      <a id="stickyWaBtn" href="https://wa.me/5491123978429?text=Hola%20Espacio%20%C3%89ter!%20%E2%9C%A8%20Vi%20la%20grilla%20de%20clases%20y%20quiero%20consultar%20cupos%20para%20empezar%20Pole%20desde%20cero%20en%20San%20Mart%C3%ADn%2039%20(Ciudadela)." target="_blank" rel="noopener" class="w-full bg-[#e6007e] hover:bg-[#ff1a94] text-white font-bold py-3.5 px-6 rounded-2xl shadow-rosa flex items-center justify-between text-xs sm:text-sm border border-white/20 transition">
+        <span class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>RESERVAR MI CUPO POR WHATSAPP</span>
+        </span>
+        <span class="font-akira text-xs bg-black/25 px-2.5 py-1 rounded-lg">ESCRIBIR →</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMyth(id) {
+      const body = document.getElementById('myth-body-' + id);
+      const icon = document.getElementById('myth-icon-' + id);
+      if (body.classList.contains('hidden')) {
+        body.classList.remove('hidden');
+        icon.textContent = '−';
+      } else {
+        body.classList.add('hidden');
+        icon.textContent = '+';
+      }
+    }
+
+    function filterDiscipline(cat) {
+      const dayCards = document.querySelectorAll('.day-card');
+      const filters = ['all', 'pole', 'complemento', 'baile'];
+      filters.forEach(f => {
+        const btn = document.getElementById('filter-' + f);
+        if (f === cat) {
+          btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#e6007e] text-white shadow-rosa transition';
+        } else {
+          btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#161332]/80 text-white/80 hover:text-white border border-white/20 transition';
+        }
+      });
+
+      dayCards.forEach(card => {
+        const rows = card.querySelectorAll('.class-row');
+        let visibleCount = 0;
+        rows.forEach(row => {
+          const rowCats = (row.dataset.cat || '').split(' ');
+          if (cat === 'all' || rowCats.includes(cat)) {
+            row.classList.remove('hidden');
+            row.classList.add('flex');
+            visibleCount++;
+          } else {
+            row.classList.add('hidden');
+            row.classList.remove('flex');
+          }
+        });
+        if (visibleCount === 0) {
+          card.classList.add('hidden');
+          card.classList.remove('flex');
+        } else {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+        }
+      });
+    }
+
+    function selectClass(className) {
+      const label = document.getElementById('selectedScheduleLabel');
+      const waBtn = document.getElementById('scheduleWaBtn');
+      const stickyBtn = document.getElementById('stickyWaBtn');
+
+      label.textContent = className;
+      const msg = encodeURIComponent(
+        `Hola Espacio Éter! ✨ Vi la grilla de clases y quiero consultar cupos en San Martín 39 (Ciudadela) para el horario de: ${className}. ¿Quedan lugares disponibles?`
+      );
+      const url = `https://wa.me/5491123978429?text=${msg}`;
+      waBtn.href = url;
+      stickyBtn.href = url;
+
+      waBtn.classList.add('ring-4', 'ring-white/60');
+      setTimeout(() => waBtn.classList.remove('ring-4', 'ring-white/60'), 650);
+    }
+
+    // Tracking automático de conversiones hacia WhatsApp para Meta Pixel
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+      link.addEventListener('click', () => {
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Contact', {
+            content_name: document.getElementById('selectedScheduleLabel')?.textContent || 'Consulta General Espacio Éter',
+            content_category: 'Pole Sport Ciudadela',
+            value: 48000,
+            currency: 'ARS'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
