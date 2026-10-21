@@ -7,4 +7,4 @@ Espacio Éter - Mini Landing Page Oficial (Ciudadela)
     npx tailwindcss@3.4.17 -i tailwind.src.css -o tailwind.min.css --minify
 
 ## Meta Pixel
-Configuración en `pixel.js` (ID 1028287166250408, «mensajes Eter»). `CONSENT_MODE` = 'opt-out' por defecto.
+Configuración en `pixel.js` (ID 1028287166250408, «mensajes Eter»).
