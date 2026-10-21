@@ -3,8 +3,33 @@
 
   const CONFIG = Object.freeze({
     WA_ORIGIN: 'https://wa.me/5491123978429',
+    // Píxel Oficial de Espacio Éter ("mensajes Eter" - Cuenta Lean Fines)
+    META_PIXEL_ID: '1028287166250408',
     ALLOWED_FILTERS: Object.freeze(['all', 'pole', 'complemento', 'baile'])
   });
+
+  // Inicializador automático del Píxel de Meta (se activa apenas META_PIXEL_ID tenga el número)
+  function initMetaPixel(pixelId) {
+    if (!pixelId || !/^\d{10,20}$/.test(pixelId)) return;
+    if (window.fbq) return;
+    const n = window.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    if (!window._fbq) window._fbq = n;
+    n.push = n;
+    n.loaded = true;
+    n.version = '2.0';
+    n.queue = [];
+    const t = document.createElement('script');
+    t.async = true;
+    t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    const s = document.getElementsByTagName('script')[0];
+    if (s && s.parentNode) s.parentNode.insertBefore(t, s);
+    window.fbq('init', pixelId);
+    window.fbq('track', 'PageView');
+  }
+
+  initMetaPixel(CONFIG.META_PIXEL_ID);
 
   function toggleMyth(id) {
     const safeId = String(id).replace(/[^0-9]/g, '');
@@ -74,6 +99,13 @@
 
     waBtn.classList.add('ring-4', 'ring-white/60');
     setTimeout(() => waBtn.classList.remove('ring-4', 'ring-white/60'), 650);
+
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'ViewContent', {
+        content_name: cleanName,
+        content_category: 'Seleccion Horario Grilla'
+      });
+    }
   }
 
   document.addEventListener('click', (e) => {
