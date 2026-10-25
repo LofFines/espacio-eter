@@ -66,11 +66,13 @@
 
     label.textContent = cleanName;
     const msg = encodeURIComponent(
-      `Hola Espacio Éter! ✨ Vi la grilla de clases y quiero consultar cupos en San Martín 39 (Ciudadela) para el horario de: ${cleanName}. ¿Quedan lugares disponibles?`
+      `Hola Espacio Éter! ✨ Quiero reservar una clase de prueba en San Martín 39 (Ciudadela): ${cleanName}. ¿Queda lugar?`
     );
     const url = `${CONFIG.WA_ORIGIN}?text=${msg}`;
     waBtn.setAttribute('href', url);
     stickyBtn.setAttribute('href', url);
+    waBtn.setAttribute('data-wa-clase', cleanName);
+    stickyBtn.setAttribute('data-wa-clase', cleanName);
 
     waBtn.classList.add('ring-4', 'ring-white/60');
     setTimeout(() => waBtn.classList.remove('ring-4', 'ring-white/60'), 650);

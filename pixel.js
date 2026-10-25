@@ -26,7 +26,7 @@
     var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
     if (!a || !WA_RE.test(a.getAttribute('href') || '')) return;
     if (typeof window.fbq === 'function') {
-      window.fbq('track', 'Contact', { content_name: a.getAttribute('data-wa-origen') || 'whatsapp' });
+      window.fbq('track', 'Contact', { content_name: a.getAttribute('data-wa-origen') || 'whatsapp', content_category: a.getAttribute('data-wa-clase') || 'sin-clase' });
     }
   }, true);
 })();
