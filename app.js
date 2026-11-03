@@ -6,6 +6,46 @@
     ALLOWED_FILTERS: Object.freeze(['all', 'pole', 'complemento', 'baile'])
   });
 
+  // ---- UTMs: se guardan en sessionStorage y se suman cortitas al tag del mensaje de WhatsApp.
+  const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+  const UTM_STORE = 'eter_utm';
+  function readUtm() {
+    let saved = {};
+    try { saved = JSON.parse(sessionStorage.getItem(UTM_STORE) || '{}') || {}; } catch (_) { saved = {}; }
+    const qs = new URLSearchParams(window.location.search);
+    let changed = false;
+    UTM_KEYS.forEach(k => {
+      const v = qs.get(k);
+      if (v) { saved[k] = String(v).slice(0, 200); changed = true; }
+    });
+    if (changed) { try { sessionStorage.setItem(UTM_STORE, JSON.stringify(saved)); } catch (_) {} }
+    return saved;
+  }
+  const UTM = readUtm();
+  function waTag() {
+    const camp = (UTM.utm_campaign || '').replace(/[\[\]\r\n]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 30);
+    return camp ? `[web-meta · ${camp}]` : '[web-meta]';
+  }
+  function waUrl(text) {
+    return `${CONFIG.WA_ORIGIN}?text=${encodeURIComponent(`${text} ${waTag()}`)}`;
+  }
+  // Reescribe el tag [web-meta] de todos los links de WhatsApp con la campaña (si vino por anuncio).
+  function tagWaLinks() {
+    const tag = waTag();
+    if (tag === '[web-meta]') return;
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => {
+      try {
+        const u = new URL(a.href);
+        const t = u.searchParams.get('text');
+        if (t && t.endsWith('[web-meta]')) {
+          u.searchParams.set('text', t.slice(0, -'[web-meta]'.length) + tag);
+          a.setAttribute('href', `${CONFIG.WA_ORIGIN}?text=${encodeURIComponent(u.searchParams.get('text'))}`);
+        }
+      } catch (_) {}
+    });
+  }
+  window.__eterUtm = UTM;
+
   function toggleMyth(id) {
     const safeId = String(id).replace(/[^0-9]/g, '');
     const body = document.getElementById('myth-body-' + safeId);
@@ -65,10 +105,7 @@
     if (!label || !waBtn || !stickyBtn) return;
 
     label.textContent = cleanName;
-    const msg = encodeURIComponent(
-      `Hola Espacio Éter! ✨ Quiero reservar una clase de prueba en San Martín 39 (Ciudadela): ${cleanName}. ¿Queda lugar?`
-    );
-    const url = `${CONFIG.WA_ORIGIN}?text=${msg}`;
+    const url = waUrl(`Hola Araceli! Vi la web y quiero reservar una clase de prueba de ${cleanName}. ¿Qué días tienen lugar?`);
     waBtn.setAttribute('href', url);
     stickyBtn.setAttribute('href', url);
     waBtn.setAttribute('data-wa-clase', cleanName);
@@ -84,6 +121,8 @@
       });
     }
   }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tagWaLinks); else tagWaLinks();
 
   document.addEventListener('click', (e) => {
     const filterBtn = e.target.closest('[data-filter-cat]');
