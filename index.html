@@ -236,44 +236,37 @@
       <a href="https://www.google.com/maps/place/Espacio+%C3%89ter/@-34.6407953,-58.5414964,17z/data=!4m8!3m7!1s0x95bcc933c88e5635:0xefdf750763bcf2e0!8m2!3d-34.6407953!4d-58.5414964!9m1!1b1!16s%2Fg%2F11hz7d3tln" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-[#38bdf8] hover:text-white bg-[#0069b4]/25 border border-[#0069b4]/60 px-4 py-2.5 rounded-xl transition">Ver todas en Google Maps →</a>
     </div>
 
-    <h2 class="font-akira text-xl sm:text-2xl text-white text-center mt-9 mb-4">ASÍ SON NUESTRAS CLASES DE NIVEL INICIAL</h2>
-    <!-- FOTOS REALES DE CLASES (4 a 6, con permiso de las alumnas). Pendiente: [FOTO_CLASE_1]…[FOTO_CLASE_6] -->
-    <div id="fotos-clases" class="grid grid-cols-3 gap-2">
-        <!-- [FOTO_CLASE_1]: reemplazar este div por <img src="clase-1.webp" width="400" height="400" loading="lazy" alt="..." class="w-full aspect-square object-cover rounded-xl" /> -->
-        <div class="foto-clase aspect-square rounded-xl border border-dashed border-white/25 flex items-center justify-center text-[10px] text-white/40">[FOTO_CLASE_1]</div>
-        <!-- [FOTO_CLASE_2]: reemplazar este div por <img src="clase-2.webp" width="400" height="400" loading="lazy" alt="..." class="w-full aspect-square object-cover rounded-xl" /> -->
-        <div class="foto-clase aspect-square rounded-xl border border-dashed border-white/25 flex items-center justify-center text-[10px] text-white/40">[FOTO_CLASE_2]</div>
-        <!-- [FOTO_CLASE_3]: reemplazar este div por <img src="clase-3.webp" width="400" height="400" loading="lazy" alt="..." class="w-full aspect-square object-cover rounded-xl" /> -->
-        <div class="foto-clase aspect-square rounded-xl border border-dashed border-white/25 flex items-center justify-center text-[10px] text-white/40">[FOTO_CLASE_3]</div>
-        <!-- [FOTO_CLASE_4]: reemplazar este div por <img src="clase-4.webp" width="400" height="400" loading="lazy" alt="..." class="w-full aspect-square object-cover rounded-xl" /> -->
-        <div class="foto-clase aspect-square rounded-xl border border-dashed border-white/25 flex items-center justify-center text-[10px] text-white/40">[FOTO_CLASE_4]</div>
-        <!-- [FOTO_CLASE_5]: reemplazar este div por <img src="clase-5.webp" width="400" height="400" loading="lazy" alt="..." class="w-full aspect-square object-cover rounded-xl" /> -->
-        <div class="foto-clase aspect-square rounded-xl border border-dashed border-white/25 flex items-center justify-center text-[10px] text-white/40">[FOTO_CLASE_5]</div>
-        <!-- [FOTO_CLASE_6]: reemplazar este div por <img src="clase-6.webp" width="400" height="400" loading="lazy" alt="..." class="w-full aspect-square object-cover rounded-xl" /> -->
-        <div class="foto-clase aspect-square rounded-xl border border-dashed border-white/25 flex items-center justify-center text-[10px] text-white/40">[FOTO_CLASE_6]</div>
-    </div>
-    <p class="text-center mt-4"><a href="https://www.instagram.com/espacioeter/" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-[#ff66b8] hover:text-white underline">Mirá más en Instagram @espacioeter →</a></p>
+    <!-- GALERÍA DE ALUMNAS (oculta hasta tener fotos). Reactivar: ver README «Fotos y bloques ocultos». -->
+    <template id="tpl-galeria">
+      <h2 class="font-akira text-xl sm:text-2xl text-white text-center mt-9 mb-4">ASÍ SON NUESTRAS CLASES DE NIVEL INICIAL</h2>
+      <div id="fotos-clases" class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <!-- una <picture> por foto, nombre img/alumnas/alumnas-NN -->
+        <picture>
+          <source type="image/webp" srcset="img/alumnas/alumnas-01-480.webp 480w, img/alumnas/alumnas-01-960.webp 960w" sizes="(min-width:640px) 290px, 50vw" />
+          <img src="img/alumnas/alumnas-01-960.webp" width="960" height="960" loading="lazy" decoding="async" alt="Alumnas en clase de pole nivel inicial" class="w-full aspect-square object-cover rounded-xl" />
+        </picture>
+      </div>
+    </template>
   </section>
 
-  <!-- QUIÉNES TE RECIBEN — sin nombres ni bios inventados: completar marcadores -->
+  <!-- QUIÉNES TE RECIBEN (oculto hasta tener fotos y datos reales). Reactivar: ver README. -->
+  <template id="tpl-profes">
   <section id="profes" class="max-w-4xl mx-auto px-4 py-6">
     <h2 class="font-akira text-xl sm:text-2xl text-white text-center mb-4">QUIÉNES TE RECIBEN</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <div class="profe-card bg-[#161332] border border-white/10 rounded-2xl p-4 flex sm:flex-col items-center gap-3 text-left sm:text-center">
-        <!-- [FOTO_ARACELI]: <img src="araceli.webp" width="96" height="96" loading="lazy" alt="Araceli" class="w-20 h-20 rounded-full object-cover" /> -->
-        <div class="w-20 h-20 shrink-0 rounded-full border border-dashed border-white/25 flex items-center justify-center text-[9px] text-white/40">[FOTO_ARACELI]</div>
-        <div><strong class="text-white text-sm block">Araceli</strong><span class="text-white/70 text-xs">Te responde por WhatsApp. [BIO_ARACELI]</span></div>
-      </div>
-      <div class="profe-card bg-[#161332] border border-white/10 rounded-2xl p-4 flex sm:flex-col items-center gap-3 text-left sm:text-center">
-        <div class="w-20 h-20 shrink-0 rounded-full border border-dashed border-white/25 flex items-center justify-center text-[9px] text-white/40">[FOTO_PROFE_1]</div>
-        <div><strong class="text-white text-sm block">[NOMBRE_PROFE_1]</strong><span class="text-white/70 text-xs">[DISCIPLINA_PROFE_1]</span></div>
-      </div>
-      <div class="profe-card bg-[#161332] border border-white/10 rounded-2xl p-4 flex sm:flex-col items-center gap-3 text-left sm:text-center">
-        <div class="w-20 h-20 shrink-0 rounded-full border border-dashed border-white/25 flex items-center justify-center text-[9px] text-white/40">[FOTO_PROFE_2]</div>
-        <div><strong class="text-white text-sm block">[NOMBRE_PROFE_2]</strong><span class="text-white/70 text-xs">[DISCIPLINA_PROFE_2]</span></div>
-      </div>
+    <!-- Ara: img/ara/ara-480.webp + ara-960.webp (4:5) -->
+    <div class="ara-card bg-[#161332] border border-white/10 rounded-2xl p-4 flex items-center gap-4 mb-3">
+      <img src="img/ara/ara-480.webp" srcset="img/ara/ara-480.webp 480w, img/ara/ara-960.webp 960w" sizes="96px" width="480" height="600" loading="lazy" decoding="async" alt="Araceli, fundadora de Espacio Éter" class="w-24 aspect-[4/5] object-cover rounded-xl" />
+      <div><strong class="text-white text-sm block">Araceli</strong><span class="text-white/70 text-xs">Te responde por WhatsApp. (bio real)</span></div>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <!-- una .profe-card por profe (N); foto img/profes/nombre-480.webp / -960.webp (4:5) -->
+      <figure class="profe-card bg-[#161332] border border-white/10 rounded-2xl p-3 text-center">
+        <img src="img/profes/nombre-480.webp" srcset="img/profes/nombre-480.webp 480w, img/profes/nombre-960.webp 960w" sizes="(min-width:640px) 280px, 45vw" width="480" height="600" loading="lazy" decoding="async" alt="Nombre, profe de Disciplina" class="w-full aspect-[4/5] object-cover rounded-xl mb-2" />
+        <figcaption><strong class="text-white text-sm block">Nombre</strong><span class="text-white/70 text-xs">Disciplina</span></figcaption>
+      </figure>
     </div>
   </section>
+  </template>
 
   <section id="como-reservar" class="max-w-4xl mx-auto px-4 py-8 scroll-mt-14">
     <span class="text-[11px] font-bold uppercase tracking-wider text-[#38bdf8]">✦ ASÍ DE SIMPLE ✦</span>
@@ -855,8 +848,10 @@
       <span class="text-[#0069b4]">✦</span>
     </div>
     <p>San Martín 39, Ciudadela • Pole Sport, Acrobacia y Entrenamiento sin Límites</p>
-    <p class="mt-2">WhatsApp +54 9 11 2397-8429 · Atención: [HORARIO_WA]</p>
-    <p class="mt-1">[RAZON_SOCIAL] · CUIT [CUIT]</p>
+    <!-- Pie legal oculto hasta tener datos. Reactivar: descomentar y completar.
+    <p class="mt-2">WhatsApp +54 9 11 2397-8429 · Atención: (horario)</p>
+    <p class="mt-1">(razón social) · CUIT (número)</p>
+    -->
     <p class="mt-2"><a href="https://www.instagram.com/espacioeter/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Instagram @espacioeter</a> · <a href="privacidad.html" class="underline hover:text-white">Política de privacidad y cookies</a></p>
   </footer>
 
