@@ -3,8 +3,8 @@
  * gtag.js se inyecta recién después de `load` + requestIdleCallback para no tocar LCP/CLS.
  * Los eventos previos quedan en dataLayer y se envían cuando carga.
  *  - page_view: automático (config). page_location no se reescribe: las UTMs salen de la URL.
- *  - generate_lead: al tocar cualquier link de WhatsApp (mismo criterio que el Contact del píxel).
- *  - select_content: al elegir un horario en la grilla (equivale al ViewContent del píxel).
+ *  - clic_whatsapp: al tocar cualquier link de WhatsApp (mismo criterio que el Contact del píxel).
+ *  - eligio_horario: al elegir un horario en la grilla (equivale al ViewContent del píxel).
  * Sin PII, sin value ni currency, y link_url sin el texto del mensaje.
  */
 (function () {
@@ -39,7 +39,7 @@
     if (!t || !t.closest) return;
     var a = t.closest('a[href]');
     if (a && WA_RE.test(a.getAttribute('href') || '')) {
-      window.gtag('event', 'generate_lead', {
+      window.gtag('event', 'clic_whatsapp', {
         content_name: a.getAttribute('data-wa-origen') || 'whatsapp',
         content_category: a.getAttribute('data-wa-clase') || 'sin-clase',
         link_url: linkSinTexto(a.getAttribute('href')),
@@ -49,7 +49,7 @@
     }
     var sel = t.closest('[data-select-class]');
     if (sel) {
-      window.gtag('event', 'select_content', {
+      window.gtag('event', 'eligio_horario', {
         content_type: 'horario_grilla',
         content_name: String(sel.getAttribute('data-select-class') || '').slice(0, 100),
         content_category: 'Seleccion Horario Grilla'
