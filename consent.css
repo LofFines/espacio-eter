@@ -1,0 +1,10 @@
+/* Banner de consentimiento de cookies (consent.js). Fijo abajo, por encima del botón sticky de WhatsApp: no empuja contenido (CLS 0). */
+.eter-consent{position:fixed;left:12px;right:12px;bottom:84px;z-index:60;max-width:28rem;margin:0 auto;background:#161332;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:14px 16px;box-shadow:0 10px 30px rgba(0,0,0,.5);font-size:13px;line-height:1.45}
+.eter-consent[hidden]{display:none}
+.eter-consent h2{font-weight:700;font-size:14px;margin:0 0 4px}
+.eter-consent p{margin:0 0 10px;color:rgba(255,255,255,.85)}
+.eter-consent a{text-decoration:underline;color:#fff}
+.eter-consent-btns{display:flex;gap:8px}
+.eter-consent-btns button{flex:1 1 0;min-height:44px;border-radius:12px;font-weight:700;font-size:14px;background:#fff;color:#272250;border:2px solid #fff;cursor:pointer}
+.eter-consent-btns button:hover{background:#fce7f3}
+.eter-consent button:focus-visible,[data-consent-open]:focus-visible{outline:3px solid #38bdf8;outline-offset:2px}

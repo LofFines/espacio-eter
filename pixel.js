@@ -1,12 +1,16 @@
 /*
  * Meta Pixel de Espacio Éter — píxel «mensajes Eter» (cuenta publicitaria Lean Fines).
- * Se carga en TODAS las páginas, en el <head>, sin defer.
+ * Se carga en TODAS las páginas, en el <head>, pero NO hace nada sin consentimiento:
+ * solo corre si localStorage.eter_consent_v1 === 'granted' (ver consent.js, que lo vuelve
+ * a inyectar cuando la persona toca «Aceptar»).
  *  - PageView en cada carga.
  *  - Contact al tocar cualquier link de WhatsApp (wa.me, api.whatsapp.com, whatsapp://),
  *    con un único listener delegado: cubre links actuales y futuros, sin bloquear la navegación.
  */
 (function () {
   'use strict';
+  try { if (localStorage.getItem('eter_consent_v1') !== 'granted') return; } catch (_) { return; }
+  if (window.__eterPixel) return; window.__eterPixel = true;
   var PIXEL_ID = '1028287166250408';
   var WA_RE = /^(https?:\/\/(wa\.me|api\.whatsapp\.com|(www\.)?whatsapp\.com)\/|whatsapp:\/\/)/i;
 
