@@ -1,10 +1,16 @@
-/* Banner de consentimiento de cookies (consent.js). Fijo abajo, por encima del botón sticky de WhatsApp: no empuja contenido (CLS 0). */
-.eter-consent{position:fixed;left:12px;right:12px;bottom:84px;z-index:60;max-width:28rem;margin:0 auto;background:#161332;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:14px 16px;box-shadow:0 10px 30px rgba(0,0,0,.5);font-size:13px;line-height:1.45}
+/* Banner de consentimiento de cookies (consent.js). Compacto, fijo abajo y justo arriba del botón fijo de WhatsApp
+   (consent.js ajusta `bottom` según su posición). No bloquea la página: sin overlay ni scroll lock; no empuja contenido (CLS 0). */
+.eter-consent{position:fixed;left:8px;right:8px;bottom:84px;z-index:60;max-width:30rem;margin:0 auto;background:#161332;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:9px 10px 10px;box-shadow:0 8px 24px rgba(0,0,0,.5);font-size:12.5px;line-height:1.35}
 .eter-consent[hidden]{display:none}
-.eter-consent h2{font-weight:700;font-size:14px;margin:0 0 4px}
-.eter-consent p{margin:0 0 10px;color:rgba(255,255,255,.85)}
-.eter-consent a{text-decoration:underline;color:#fff}
+.eter-consent p{margin:0 0 8px;color:rgba(255,255,255,.9)}
+.eter-consent a{text-decoration:underline;color:#fff;font-weight:700}
 .eter-consent-btns{display:flex;gap:8px}
-.eter-consent-btns button{flex:1 1 0;min-height:44px;border-radius:12px;font-weight:700;font-size:14px;background:#fff;color:#272250;border:2px solid #fff;cursor:pointer}
-.eter-consent-btns button:hover{background:#fce7f3}
+.eter-consent-btns button{flex:1 1 0;min-height:44px;border-radius:11px;font-weight:700;font-size:14px;cursor:pointer;padding:0 12px}
+/* Rechazar: secundario pero bien visible (texto blanco sobre #161332, borde blanco). */
+.eter-consent-btns [data-consent="denied"]{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.85)}
+.eter-consent-btns [data-consent="denied"]:hover{background:rgba(255,255,255,.12)}
+/* Aceptar: primario de la marca (#e6007e, texto blanco, contraste 5,5:1). */
+.eter-consent-btns [data-consent="granted"]{background:#e6007e;color:#fff;border:2px solid #e6007e}
+.eter-consent-btns [data-consent="granted"]:hover{background:#c8006d;border-color:#c8006d}
 .eter-consent button:focus-visible,[data-consent-open]:focus-visible{outline:3px solid #38bdf8;outline-offset:2px}
+@media (min-width:640px){.eter-consent{padding:12px 14px;font-size:13px}}
