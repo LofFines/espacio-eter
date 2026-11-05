@@ -5,16 +5,23 @@
  *  - page_view: automático (config). page_location no se reescribe: las UTMs salen de la URL.
  *  - clic_whatsapp: al tocar cualquier link de WhatsApp (mismo criterio que el Contact del píxel).
  *  - eligio_horario: al elegir un horario en la grilla (equivale al ViewContent del píxel).
+ * Consentimiento: solo corre si localStorage.eter_consent_v1 === 'granted' (consent.js lo inyecta al
+ * aceptar). Consent Mode v2: como gtag no se carga nunca sin consentimiento, el 'default' (todo
+ * denied) y el 'update' (granted) van juntos acá, en ese orden, antes de cualquier config.
  * Sin PII, sin value ni currency, y link_url sin el texto del mensaje.
  */
 (function () {
   'use strict';
+  try { if (localStorage.getItem('eter_consent_v1') !== 'granted') return; } catch (_) { return; }
+  if (window.__eterGa) return; window.__eterGa = true;
   var GA_ID = 'G-ZPMV7H6E9J';
   var WA_RE = /^(https?:\/\/(wa\.me|api\.whatsapp\.com|(www\.)?whatsapp\.com)\/|whatsapp:\/\/)/i;
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
   window.gtag = window.gtag || gtag;
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+  gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
   gtag('js', new Date());
   gtag('config', GA_ID);
 
