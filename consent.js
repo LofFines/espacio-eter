@@ -9,7 +9,8 @@
 (function () {
   'use strict';
   var KEY = 'eter_consent_v1';
-  function get() { try { return localStorage.getItem(KEY); } catch (_) { return null; } }
+  // Solo 'granted' o 'denied' cuentan como elección; cualquier otro valor (corrupto) = sin elección → se muestra el banner.
+  function get() { try { var v = localStorage.getItem(KEY); return v === 'granted' || v === 'denied' ? v : null; } catch (_) { return null; } }
   function set(v) { try { localStorage.setItem(KEY, v); localStorage.setItem(KEY + '_fecha', new Date().toISOString()); } catch (_) {} }
   function load(src) { var s = document.createElement('script'); s.src = src; document.head.appendChild(s); }
 
@@ -19,12 +20,11 @@
     box.className = 'eter-consent';
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'false');
-    box.setAttribute('aria-labelledby', 'eterConsentTitle');
+    box.setAttribute('aria-label', 'Cookies de medición');
     box.setAttribute('aria-describedby', 'eterConsentText');
     box.hidden = true;
     box.innerHTML =
-      '<h2 id="eterConsentTitle">¿Aceptás cookies de medición?</h2>' +
-      '<p id="eterConsentText">Usamos cookies de Meta y Google Analytics para medir las visitas y los anuncios. Solo se activan si aceptás. ' +
+      '<p id="eterConsentText">Usamos cookies de Meta y Google Analytics para medir visitas y anuncios, solo si aceptás. ' +
       '<a href="privacidad.html">Más info</a></p>' +
       '<div class="eter-consent-btns">' +
       '<button type="button" data-consent="denied">Rechazar</button>' +
@@ -37,12 +37,23 @@
     box.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && get()) close();
     });
-    document.body.appendChild(box);
+    // Primero en el body: con Tab es lo primero que se recorre (no mueve el foco solo ni bloquea la página).
+    document.body.insertBefore(box, document.body.firstChild);
+    window.addEventListener('resize', place);
   }
   function open(focus) {
     if (!box) build();
     box.hidden = false;
+    place();
     if (focus) { lastFocus = document.activeElement; box.querySelector('button').focus(); }
+  }
+  // Se ubica justo arriba del botón fijo «Reservar mi clase de prueba / WhatsApp», sin taparlo.
+  function place() {
+    if (!box || box.hidden) return;
+    var s = document.getElementById('stickyWaBtn');
+    if (!s) return;
+    var top = s.getBoundingClientRect().top;
+    if (top > 0) box.style.bottom = Math.max(8, Math.round(window.innerHeight - top + 6)) + 'px';
   }
   function close() {
     if (box) box.hidden = true;
