@@ -45,6 +45,12 @@
     if (typeof window.fbq === 'function') window.fbq(std.indexOf(meta) >= 0 ? 'track' : 'trackCustom', meta, params);
     if (typeof window.gtag === 'function') window.gtag('event', ga, params);
   }
+  function cookie(n) { var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : ''; }
+  function medicion() {
+    var fbc = cookie('_fbc');
+    if (!fbc) { var id = qs.get('fbclid') || (window.__eterUtm || {}).fbclid || ''; try { id = id || (JSON.parse(sessionStorage.getItem('eter_utm') || '{}').fbclid || ''); } catch (_) {} if (id) fbc = 'fb.1.' + Date.now() + '.' + id; }
+    return { fbp: cookie('_fbp'), fbc: fbc };
+  }
   function log(txt) {
     var d = $('debug'); if (!d) return;
     d.classList.remove('oculto');
@@ -182,6 +188,8 @@
       nombre: st.nombre, whatsapp: st.whatsapp, adulto: st.adulto, web: $('web').value,
       consentimientoMedicion: consent() ? 'Sí' : 'No'
     };
+    // Para la API de Conversiones (aviso a Meta cuando Ara confirma): solo con consentimiento.
+    if (consent()) { var m = medicion(); body.fbp = m.fbp; body.fbc = m.fbc; body.url = location.origin + location.pathname; body.ua = navigator.userAgent; }
     var p = PREVIEW
       ? new Promise(function (ok) { setTimeout(function () { log('preview: no se guardó nada (se mandaría a la pestaña Reservas)'); ok({ ok: true, codigo: codigoNuevo(), estado: 'pendiente' }); }, 400); })
       // text/plain evita el preflight CORS que Apps Script no responde.
