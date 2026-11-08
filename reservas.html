@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reservá tu clase | Espacio Éter</title>
+  <meta name="robots" content="noindex" />
+  <!-- CSP: suma script.google.com / googleusercontent para hablar con el Apps Script de reservas. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.facebook.com https://connect.facebook.net https://www.googletagmanager.com https://*.google-analytics.com; connect-src https://script.google.com https://script.googleusercontent.com https://www.facebook.com https://connect.facebook.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#272250" />
+  <link rel="stylesheet" href="reservas.css" />
+  <link rel="stylesheet" href="consent.css" />
+  <script src="pixel.js"></script>
+</head>
+<body>
+  <div id="previewBanner" class="preview-banner oculto">VERSIÓN DE PRUEBA · datos simulados · no se guarda ninguna reserva ni se mandan eventos reales</div>
+  <header class="top"><a href="./" style="color:#fff;text-decoration:none" class="marca">Espacio Éter</a><span class="nota">San Martín 39, Ciudadela</span></header>
+
+  <main class="wrap">
+    <h1>Reservá tu clase</h1>
+    <p class="sub">Elegís clase y día, dejás tus datos y reservás con una seña de <strong>$10.000</strong> que después se descuenta.</p>
+    <div class="pasos" aria-hidden="true"><span data-paso="1"></span><span data-paso="2"></span><span data-paso="3"></span><span data-paso="4"></span><span data-paso="5"></span></div>
+
+    <!-- PASO 1: grilla -->
+    <section id="paso1" class="card">
+      <h2>1. Elegí tu clase</h2>
+      <div class="filtros" id="filtros"></div>
+      <div id="grilla"><p class="nota">Cargando horarios…</p></div>
+    </section>
+
+    <!-- PASO 2: fecha y modalidad -->
+    <section id="paso2" class="card oculto">
+      <h2>2. Día y tipo de reserva</h2>
+      <p id="claseElegida" class="sub"></p>
+      <label class="campo">¿Qué día venís?</label>
+      <div id="fechas" class="opciones"></div>
+      <label class="campo" style="margin-top:14px">¿Qué querés reservar?</label>
+      <div id="modalidades" class="opciones"></div>
+      <p class="err" id="err2"></p>
+      <button class="btn" id="ir3">Seguir</button>
+      <button class="btn sec" data-volver="1">Cambiar de clase</button>
+    </section>
+
+    <!-- PASO 3: datos -->
+    <section id="paso3" class="card oculto">
+      <h2>3. Tus datos</h2>
+      <label class="campo" for="nombre">Nombre y apellido</label>
+      <input type="text" id="nombre" autocomplete="name" maxlength="80" />
+      <label class="campo" for="whatsapp">WhatsApp</label>
+      <input type="tel" id="whatsapp" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="11 2345 6789" />
+      <div id="adultoBox" class="oculto">
+        <label class="campo" for="adulto">Nombre de la persona adulta responsable</label>
+        <input type="text" id="adulto" maxlength="80" />
+      </div>
+      <!-- Honeypot anti-spam: las personas no lo ven -->
+      <input type="text" id="web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+      <label class="check"><input type="checkbox" id="acepto" /> <span>Acepto las condiciones: la reserva queda <strong>confirmada cuando Ara verifica la seña</strong>. Si avisás antes de la clase, reprogramás sin perderla. Tus datos se usan solo para gestionar la reserva (<a href="privacidad.html">privacidad</a>).</span></label>
+      <p class="err" id="err3"></p>
+      <button class="btn" id="ir4">Ver precios y seña</button>
+      <button class="btn sec" data-volver="2">Volver</button>
+    </section>
+
+    <!-- PASO 4: precios + resumen -->
+    <section id="paso4" class="card oculto">
+      <h2>4. Tu reserva</h2>
+      <div id="planesBox" class="oculto">
+        <label class="campo">Elegí tu plan mensual</label>
+        <div id="planes" class="opciones"></div>
+        <p class="nota" id="comboNota"></p>
+      </div>
+      <div class="resumen" id="resumen"></div>
+      <p class="err" id="err4"></p>
+      <button class="btn" id="reservar">Reservar y pagar la seña</button>
+      <button class="btn sec" data-volver="3">Volver</button>
+    </section>
+
+    <!-- PASO 5: pago de seña -->
+    <section id="paso5" class="card pago oculto">
+      <h2>5. Pagá la seña</h2>
+      <p>Tu código de reserva: <span class="codigo" id="codigo"></span> <span class="estado">PENDIENTE</span></p>
+      <p class="sub" style="margin-top:8px">Transferí <strong>$10.000</strong> a este alias de Mercado Pago:</p>
+      <div class="alias"><code id="alias">espacioeter.mp</code><button type="button" id="copiar">Copiar</button></div>
+      <p class="nota">Destinatario: <strong style="color:#fff">Araceli Meli</strong>. Revisá que figure ese nombre antes de transferir.</p>
+      <p class="sub" style="margin-top:12px">Después mandale el comprobante a Ara por WhatsApp con tu código. Cuando lo verifica, tu lugar queda <strong>confirmado</strong>.</p>
+      <a class="btn wa" id="waComprobante" data-wa-origen="reserva" target="_blank" rel="noopener noreferrer" href="#">Enviar comprobante por WhatsApp →</a>
+      <p class="nota" style="margin-top:12px">Hasta que Ara confirme, la reserva figura como pendiente y el lugar no está asegurado. La seña se descuenta del total.</p>
+    </section>
+  </main>
+
+  <footer class="wrap nota">Espacio Éter · San Martín 39, Ciudadela · <a href="privacidad.html">Privacidad</a> · <a href="#" data-consent-open>Configurar cookies</a></footer>
+  <div id="debug" class="debug oculto" aria-hidden="true"></div>
+
+  <script src="reservas-data.js"></script>
+  <script src="reservas.js"></script>
+  <script src="consent.js"></script>
+  <script src="ga4.js"></script>
+</body>
+</html>

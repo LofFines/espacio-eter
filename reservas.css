@@ -1,0 +1,60 @@
+/* Estilos de la página de reservas (independiente de Tailwind para no regenerar tailwind.min.css). */
+@font-face { font-family: 'Montserrat'; font-weight: 400 900; font-display: swap; src: url(fonts/montserrat-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Syne'; font-weight: 800; font-display: swap; src: url(fonts/syne-800-latin.woff2) format('woff2'); }
+:root { --rosa: #e6007e; --rosa2: #ff1a94; --violeta: #272250; --azul: #0069b4; --dark: #161332; --celeste: #38bdf8; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--dark); color: #fff; font-family: 'Montserrat', Arial, sans-serif; line-height: 1.45; }
+a { color: var(--celeste); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 16px; }
+header.top { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--violeta); border-bottom: 1px solid rgba(255,255,255,.1); }
+header.top .marca { font-family: 'Syne', 'Arial Black', sans-serif; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.preview-banner { background: #fbbf24; color: #1f1300; font-weight: 700; font-size: 13px; text-align: center; padding: 8px 12px; }
+h1, h2 { font-family: 'Syne', 'Arial Black', sans-serif; text-transform: uppercase; letter-spacing: .04em; line-height: 1.1; }
+h1 { font-size: 28px; margin: 12px 0 4px; }
+h2 { font-size: 18px; margin: 0 0 12px; }
+.sub { color: rgba(255,255,255,.75); font-size: 14px; margin: 0 0 16px; }
+.pasos { display: flex; gap: 6px; margin: 8px 0 18px; }
+.pasos span { flex: 1; height: 5px; border-radius: 4px; background: rgba(255,255,255,.15); }
+.pasos span.on { background: var(--rosa); }
+.card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 16px; margin-bottom: 16px; }
+.filtros { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.chip { border: 1px solid rgba(255,255,255,.25); background: transparent; color: #fff; border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.chip.on { background: var(--rosa); border-color: var(--rosa); }
+.dia { margin-bottom: 14px; }
+.dia h3 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--celeste); }
+.clase { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 10px; text-align: left; background: var(--violeta); color: #fff; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 10px 12px; margin-bottom: 6px; font: inherit; cursor: pointer; }
+.clase:hover, .clase.sel { border-color: var(--rosa); }
+.clase .hora { font-weight: 800; min-width: 92px; }
+.clase .nom { flex: 1; font-size: 14px; }
+.clase .nom small { display: block; color: rgba(255,255,255,.6); font-size: 12px; }
+.badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; white-space: nowrap; background: rgba(56,189,248,.15); color: var(--celeste); }
+.badge.pocos { background: rgba(230,0,126,.2); color: #ff66b8; }
+.badge.lleno { background: rgba(255,255,255,.12); color: rgba(255,255,255,.6); }
+.opciones { display: grid; gap: 8px; }
+.opcion { display: flex; gap: 10px; align-items: flex-start; background: var(--violeta); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px; cursor: pointer; }
+.opcion input { margin-top: 3px; accent-color: var(--rosa); }
+.opcion.dis { opacity: .45; cursor: not-allowed; }
+.opcion strong { display: block; }
+.opcion span { font-size: 13px; color: rgba(255,255,255,.75); }
+label.campo { display: block; font-size: 13px; font-weight: 700; margin: 10px 0 4px; }
+input[type=text], input[type=tel] { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.25); background: #0f0d26; color: #fff; font: inherit; }
+.check { display: flex; gap: 8px; font-size: 13px; color: rgba(255,255,255,.8); margin-top: 12px; }
+.btn { display: block; width: 100%; text-align: center; background: var(--rosa); color: #fff; border: 0; border-radius: 12px; padding: 14px; font: inherit; font-weight: 800; font-size: 15px; cursor: pointer; text-decoration: none; margin-top: 14px; }
+.btn:hover { background: var(--rosa2); }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+.btn.sec { background: transparent; border: 1px solid rgba(255,255,255,.3); }
+.btn.wa { background: #25d366; color: #062b14; }
+.err { color: #ff8fb8; font-size: 13px; margin-top: 8px; min-height: 1em; }
+.resumen { font-size: 14px; }
+.resumen div { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,.12); }
+.resumen div:last-child { border-bottom: 0; }
+.total { font-weight: 800; color: #ff66b8; }
+.pago { background: linear-gradient(135deg, var(--violeta), #3a1d55); border: 2px solid var(--rosa); }
+.alias { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #0f0d26; border-radius: 12px; padding: 12px; margin: 8px 0; }
+.alias code { font-size: 20px; font-weight: 800; letter-spacing: .02em; }
+.alias button { background: var(--rosa); color: #fff; border: 0; border-radius: 8px; padding: 8px 12px; font: inherit; font-weight: 700; cursor: pointer; }
+.codigo { white-space: nowrap; font-family: 'Syne', 'Arial Black', sans-serif; font-size: 22px; color: var(--celeste); }
+.estado { display: inline-block; background: #fbbf24; color: #1f1300; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+.nota { font-size: 12px; color: rgba(255,255,255,.65); }
+.debug { max-width: 760px; margin: 0 auto 16px; max-height: 220px; overflow: auto; background: rgba(0,0,0,.85); color: #a3e635; font: 11px/1.4 monospace; padding: 8px; border-radius: 8px; z-index: 50; }
+.oculto { display: none !important; }
