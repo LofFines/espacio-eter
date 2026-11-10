@@ -1,0 +1,46 @@
+PASS  01 reserva válida (suelta, Pole lunes) → ok, código RES-XXXXXX, precio del servidor, 30 columnas
+PASS  02 nombre con fórmula =HYPERLINK → se guarda como texto con ' adelante
+PASS  03 adulto con fórmula (+cmd|calc) en Acro infantil → escapado
+PASS  04 fbp/fbc/url/ua con fórmulas y consentimiento Sí → todo escapado
+PASS  05 plan con fórmula =IMAGE() (modalidad mes) → Plan inválido, sin fila
+PASS  06 fecha "+002026-11-16" (año extendido) → Fecha inválida
+PASS  07 fecha 2099-11-16 → fuera de rango
+PASS  08 fecha a 61 días → fuera de rango; a 0 días pasada la hora → rechazada
+PASS  09 fechas no reales o con formato raro (2026-02-30, "2026-11-16 ", 2026-11-16T19:00, =2026-11-16, número) → rechazadas
+PASS  10 día de la semana que no coincide con la clase → Fecha inválida
+PASS  11 body null / "" / array / número / JSON inválido → JSON de error genérico, sin excepción
+PASS  12 postData ausente → JSON de error, sin excepción
+PASS  13 body de 5 KB → rechazado antes de parsear
+PASS  14 plan objeto / array / 2 MB → rechazado
+PASS  15 plan inexistente → Plan inválido; plan válido → precio de la planilla y plan de la planilla
+PASS  16 clase suelta en disciplina sin precio de suelta (Funcional) → rechazada
+PASS  17 clase de prueba en clase que NO la ofrece (ETR-099) → rechazada; en una que sí → ok
+PASS  18 modalidad inválida / claseId con fórmula / claseId objeto → rechazado
+PASS  19 nombre: 1 carácter, 61 caracteres, no-string → rechazados; 2 y 60 → ok
+PASS  20 WhatsApp: 7 dígitos, 16 dígitos, con letras, con fórmula → rechazados; +54 9 11 → ok y guardado como texto
+PASS  21 sin acepto:true (falta, "true", 1) → rechazado
+PASS  22 duplicado mismo WhatsApp (en otro formato) + clase + fecha → rechazado
+PASS  23 más de 3 pendientes activas por WhatsApp → la 4ª rechazada (planilla)
+PASS  24 más de 3 pendientes por WhatsApp → la 4ª rechazada (caché, antes del lock)
+PASS  25 honeypot web=x → respuesta con el mismo formato que una real, sin escribir y sin tocar contadores
+PASS  26 tope global por hora (TOPE_RESERVAS_HORA=2) → la 3ª rechazada
+PASS  27 tope global default = 30
+PASS  28 lock ocupado → mensaje de reintento (tryLock corto), sin escribir
+PASS  29 validaciones baratas antes del lock: payload inválido no toca la planilla
+PASS  30 error interno (planilla falla) → {ok:false,error:"Error interno"} sin stack ni rutas
+PASS  31 Turnstile activado (TURNSTILE_SECRET): sin token → rechazado y sin fila
+PASS  32 Turnstile activado: token válido → verifica en el servidor con secret y token y reserva
+PASS  33 Turnstile activado: success=false o hostname ajeno → rechazado
+PASS  34 Turnstile desactivado (sin secret) → no llama a Cloudflare
+PASS  35 Acro infantil: sin adulto → rechazado; con adulto → ok. Clase no infantil: el adulto se descarta
+PASS  36 cupo: clase completa (cupo 1 con 1 confirmada, fecha como Date en la planilla) → rechazada
+PASS  37 confirmación de Ara: fila con fecha "+002026-11-16" → no confirma (alerta) y no sobrevende
+PASS  38 confirmación de Ara: cupo lleno con clave normalizada (fecha Date) → alerta «No quedan lugares»
+PASS  39 aviso a Meta: el token va en el body, no en la URL
+PASS  40 doGet: acción inválida, sin parámetros y e undefined → JSON; datos → ok sin datos personales
+PASS  41 doGet con error interno → "Error interno" sin stack
+PASS  42 celda_(): neutraliza = + - @ tab CR, controles y recorta
+PASS  43 ninguna fila escrita en todas las pruebas válidas tiene celdas que Sheets tome como fórmula
+PASS  44 vencerPendientes(): marca vencidas las de clase pasada o >48 h
+PASS  45 no usa openById (script vinculado + @OnlyCurrentDoc)
+Resultado: 45 PASS, 0 FAIL (fechas de prueba: lunes 2026-11-16, sábado 2026-11-14; 2026-11-10T21:23:47.524Z)
