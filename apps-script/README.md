@@ -60,7 +60,7 @@ Mientras `TURNSTILE_SECRET` no exista, el servidor no lo exige; mientras la site
 ## Pendiente para enlazarlo desde la landing (con OK de Leandro)
 1. Completar «Alumnas fijas» (columna L de Grilla) en las clases de Pole.
 2. Hacer el «Despliegue seguro» de arriba.
-3. Completar en `privacidad.html` los `[COMPLETAR: …]` (razón social, CUIT, email y plazo).
+3. ~~Completar en `privacidad.html` los datos del responsable y el plazo~~ — hecho el 10/11 (sin razón social ni CUIT por decisión de Leandro; sin email porque el estudio no publica uno; plazo: 12 meses).
 4. Enlazar `reservas.html` desde la landing.
 
 ## Aviso a Meta cuando Ara confirma (API de Conversiones)
