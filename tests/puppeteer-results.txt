@@ -1,0 +1,12 @@
+PASS  landing: 2 links visibles «Reservá tu clase online» (hero y grilla)
+PASS  landing: el botón del hero abre reservas.html
+PASS  landing: sin consentimiento 0 requests a Meta/Google
+PASS  suelta: resumen con seña $10.000
+PASS  suelta: POST con acepto:true y sin precio del cliente
+PASS  suelta: paso 5 muestra código, alias espacioeter.mp y titular Araceli Meli
+PASS  suelta: sin errores JS ni violaciones de CSP
+PASS  prueba: muestra solo la seña, sin $5.000 ni otro precio
+PASS  sin acepto: no avanza y muestra error
+PASS  acro infantil: POST con adulto
+PASS  B1: datos maliciosos del GET quedan como texto (0 nodos inyectados)
+Resultado: 11 PASS, 0 FAIL (2026-11-10T22:23:04.924Z)

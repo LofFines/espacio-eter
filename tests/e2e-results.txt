@@ -1,0 +1,31 @@
+PASS  A flujo completo: código RES- visible
+PASS  A sin consentimiento: 0 requests a Meta/Google
+PASS  A banner de cookies visible sin elección
+PASS  A POST con acepto:true, consentimientoMedicion No, sin fbp/url/ua, text/plain
+PASS  A link de WhatsApp a 5491123978429 con código y SIN el nombre
+PASS  A sin violaciones de CSP
+PASS  A el precio $5.000 no aparece
+PASS  B rechazo: 0 requests a Meta/Google y flujo ok
+PASS  B sin violaciones de CSP
+PASS  C con consentimiento: se piden fbevents.js y gtag/js (abortados)
+PASS  C POST con consentimiento Sí y fbp
+PASS  C clase de prueba: resumen sin precio, solo seña $10.000
+PASS  C sin violaciones de CSP (scripts de terceros permitidos)
+PASS  D aceptar carga trackers; revocar recarga y quedan 0
+PASS  E XSS: ningún <img>/<a>/<svg> inyectado en grilla, fechas, planes ni resumen; 0 flags
+PASS  F preview: 0 requests externas y 0 POST; código RES- local
+PASS  G error del servidor se muestra como texto (sin HTML)
+PASS  H Acro infantil: exige adulto, etiqueta para el nombre del menor y POST con adulto
+PASS  I Turnstile (activado por prueba, CSP ajustada): el token viaja en el POST
+PASS  J Turnstile desactivado: ningún request a Cloudflare
+PASS  K index: 0 trackers sin consentimiento
+PASS  K index: 0 noscript, Tailwind estático sin CDN
+PASS  K index: links de WhatsApp a 5491123978429 con UTM [web-meta · test]
+PASS  K index: banner menciona Meta, Google y el WhatsApp cifrado
+PASS  K index: sin $5.000 y sin violaciones de CSP
+PASS  L privacidad: banner visible, 0 trackers, 0 noscript, «Configurar cookies» presente
+PASS  L privacidad: misma CSP que index.html y sin violaciones
+PASS  L privacidad: sin «no tiene formularios», con sección de reservas, hash, menores, Google, transferencia y placeholders
+PASS  M privacidad con consentimiento: Pixel y GA4 cargan sin violaciones de CSP
+
+Resultado: 29 PASS, 0 FAIL (2026-11-10T21:31:06.185Z). Backend mockeado con page.route; 0 requests reales a script.google.com.
