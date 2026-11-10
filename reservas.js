@@ -17,7 +17,7 @@
   'use strict';
 
   var CONFIG = {
-    API_URL: '', // URL /exec del Apps Script. Vacío = preview obligatorio.
+    API_URL: 'https://script.google.com/macros/s/AKfycbyghZ1rFK5dOKRH8SSxFtMpXoqZ7-Aris2p2HSv0k-QyUp3V5n3-RxRu_brcswZzTmqyw/exec', // URL /exec del Apps Script. Vacío = preview obligatorio.
     WA: 'https://wa.me/5491123978429',
     SENA: 10000,
     ALIAS: 'espacioeter.mp',
@@ -60,7 +60,17 @@
   // ---------- Datos ----------
   function cargar() {
     if (PREVIEW) { $('previewBanner').classList.remove('oculto'); return Promise.resolve(window.ETER_PREVIEW_DATA); }
-    return fetch(CONFIG.API_URL + '?accion=datos', { method: 'GET' }).then(function (r) { return r.json(); });
+    return fetch(CONFIG.API_URL + '?accion=datos', { method: 'GET' }).then(function (r) { return r.json(); }).then(normalizar);
+  }
+  // Las horas pueden llegar como fracción del día (0.79 = 19:00); las pasamos a «HH:MM».
+  function hora(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (/^\d*\.\d+$/.test(s) || /^\d+$/.test(s)) { var m = Math.round(Number(s) * 1440) % 1440; return ('0' + Math.floor(m / 60)).slice(-2) + ':' + ('0' + (m % 60)).slice(-2); }
+    var t = s.match(/^(\d{1,2}):(\d{2})/); return t ? ('0' + t[1]).slice(-2) + ':' + t[2] : s;
+  }
+  function normalizar(d) {
+    (d && d.clases || []).forEach(function (c) { c.inicio = hora(c.inicio); c.fin = hora(c.fin); });
+    return d;
   }
   function confirmadas(id, iso) {
     var c = (datos.confirmadas || {})[id + '|' + iso];

@@ -25,7 +25,9 @@ var PIXEL_ID = '1028287166250408';
 function ss_() { return SpreadsheetApp.openById(SHEET_ID); }
 function json_(o) { return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
 function si_(v) { return String(v).trim().toLowerCase() === 'sí' || String(v).trim().toLowerCase() === 'si'; }
-function hhmm_(v) { return v instanceof Date ? Utilities.formatDate(v, TZ, 'HH:mm') : String(v).trim(); }
+// Horas: Date de 1899, fracción del día (0.79 = 19:00) o texto «19:00».
+function hhmm_(v) { var p = function (n) { return (n < 10 ? '0' : '') + n; }; if (v instanceof Date) return p(v.getHours()) + ':' + p(v.getMinutes()); var s = String(v).trim(); if (typeof v === 'number' || /^\d*\.\d+$/.test(s)) { var m = Math.round(Number(s) * 1440) % 1440; return p(Math.floor(m / 60)) + ':' + p(m % 60); } var t = s.match(/^(\d{1,2}):(\d{2})/); return t ? p(Number(t[1])) + ':' + t[2] : s; }
+
 
 function leerClases_() {
   var v = ss_().getSheetByName('Grilla').getDataRange().getValues();
