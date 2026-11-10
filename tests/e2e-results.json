@@ -1,0 +1,433 @@
+{
+  "A_sin_consentimiento_flujo_suelta": {
+    "trackers": [],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "POST script.google.com"
+    ],
+    "otherExternal": [],
+    "posts": [
+      {
+        "headers": "text/plain;charset=utf-8",
+        "body": {
+          "accion": "reservar",
+          "claseId": "ETR-001",
+          "fecha": "2026-11-16",
+          "modalidad": "suelta",
+          "plan": "",
+          "nombre": "Ana Prueba",
+          "whatsapp": "1123456789",
+          "adulto": "",
+          "web": "",
+          "acepto": true,
+          "consentimientoMedicion": "No"
+        }
+      }
+    ],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "bannerVisible": true,
+      "resumen": "Clase\nPole sport con Verito\nDía\nlunes 16/11 · 19:00 hs\nReserva\nClase suelta\nPrecio\n$20.000\nSeña ahora\n$10.000\nSaldo a pagar en el estudio\n$10.000",
+      "codigo": "RES-ABC123",
+      "waHref": "https://wa.me/5491123978429?text=Hola%20Ara!%20Hice%20la%20reserva%20RES-ABC123%20en%20la%20web%3A%20Pole%20sport%2C%20lunes%2016%2F11%2019%3A00%20hs%2C%20clase%20suelta.%20Te%20mando%20el%20comprobante%20de%20la%20se%C3%B1a%20de%20%2410.000.",
+      "waTexto": "Hola Ara! Hice la reserva RES-ABC123 en la web: Pole sport, lunes 16/11 19:00 hs, clase suelta. Te mando el comprobante de la seña de $10.000.",
+      "err4": ""
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "B_rechazo_flujo_mes": {
+    "trackers": [],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "POST script.google.com"
+    ],
+    "otherExternal": [],
+    "posts": [
+      {
+        "headers": "text/plain;charset=utf-8",
+        "body": {
+          "accion": "reservar",
+          "claseId": "ETR-001",
+          "fecha": "2026-11-16",
+          "modalidad": "mes",
+          "plan": "2 veces por semana",
+          "nombre": "Ana Prueba",
+          "whatsapp": "1123456789",
+          "adulto": "",
+          "web": "",
+          "acepto": true,
+          "consentimientoMedicion": "No"
+        }
+      }
+    ],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "bannerVisible": false,
+      "resumen": "Clase\nPole sport con Verito\nDía\nlunes 16/11 · 19:00 hs\nReserva\nMes · 2 veces por semana\nPrecio\n$56.000\nSeña ahora\n$10.000\nSaldo a pagar en el estudio\n$46.000",
+      "codigo": "RES-ABC123",
+      "waHref": "https://wa.me/5491123978429?text=Hola%20Ara!%20Hice%20la%20reserva%20RES-ABC123%20en%20la%20web%3A%20Pole%20sport%2C%20lunes%2016%2F11%2019%3A00%20hs%2C%20mes%20(2%20veces%20por%20semana).%20Te%20mando%20el%20comprobante%20de%20la%20se%C3%B1a%20de%20%2410.000.",
+      "waTexto": "Hola Ara! Hice la reserva RES-ABC123 en la web: Pole sport, lunes 16/11 19:00 hs, mes (2 veces por semana). Te mando el comprobante de la seña de $10.000.",
+      "err4": ""
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {
+      "eter_consent_v1": "denied"
+    }
+  },
+  "C_acepta_flujo_prueba": {
+    "trackers": [
+      "GET connect.facebook.net/en_US/fbevents.js",
+      "GET www.googletagmanager.com/gtag/js"
+    ],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "POST script.google.com"
+    ],
+    "otherExternal": [],
+    "posts": [
+      {
+        "headers": "text/plain;charset=utf-8",
+        "body": {
+          "accion": "reservar",
+          "claseId": "ETR-001",
+          "fecha": "2026-11-16",
+          "modalidad": "prueba",
+          "plan": "",
+          "nombre": "Ana & <b>\"Test\"</b>",
+          "whatsapp": "1123456789",
+          "adulto": "",
+          "web": "",
+          "acepto": true,
+          "consentimientoMedicion": "Sí",
+          "fbp": "fb.1.123.456",
+          "fbc": "",
+          "url": "http://127.0.0.1:8931/reservas.html",
+          "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      }
+    ],
+    "console": [
+      "error: Failed to load resource: net::ERR_FAILED",
+      "error: Failed to load resource: net::ERR_FAILED"
+    ],
+    "cspViolations": [],
+    "result": {
+      "bannerVisible": false,
+      "resumen": "Clase\nPole sport con Verito\nDía\nlunes 16/11 · 19:00 hs\nReserva\nClase de prueba\nSeña para reservar\n$10.000\nLa seña se descuenta de tu clase de prueba.",
+      "codigo": "RES-ABC123",
+      "waHref": "https://wa.me/5491123978429?text=Hola%20Ara!%20Hice%20la%20reserva%20RES-ABC123%20en%20la%20web%3A%20Pole%20sport%2C%20lunes%2016%2F11%2019%3A00%20hs%2C%20clase%20de%20prueba.%20Te%20mando%20el%20comprobante%20de%20la%20se%C3%B1a%20de%20%2410.000.",
+      "waTexto": "Hola Ara! Hice la reserva RES-ABC123 en la web: Pole sport, lunes 16/11 19:00 hs, clase de prueba. Te mando el comprobante de la seña de $10.000.",
+      "err4": ""
+    },
+    "cspEvents": [],
+    "cookies": [
+      "_fbp"
+    ],
+    "ls": {
+      "eter_consent_v1": "granted"
+    }
+  },
+  "D_acepta_desde_banner_luego_revoca": {
+    "trackers": [
+      "GET connect.facebook.net/en_US/fbevents.js",
+      "GET www.googletagmanager.com/gtag/js"
+    ],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "GET script.google.com?accion=datos"
+    ],
+    "otherExternal": [],
+    "posts": [],
+    "console": [
+      "error: Failed to load resource: net::ERR_FAILED",
+      "error: Failed to load resource: net::ERR_FAILED"
+    ],
+    "cspViolations": [],
+    "result": {
+      "antes": 2,
+      "despues": 0,
+      "consent": "denied",
+      "fbq": "undefined",
+      "gtag": "undefined"
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {
+      "eter_consent_v1": "denied",
+      "eter_consent_v1_fecha": "2026-11-10T21:30:24.268Z"
+    }
+  },
+  "E_xss_datos_maliciosos_del_GET": {
+    "trackers": [],
+    "apps": [
+      "GET script.google.com?accion=datos"
+    ],
+    "otherExternal": [],
+    "posts": [],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "imgsGrilla": 0,
+      "imgsFechas": 0,
+      "inyectadosResumenPlanes": 0,
+      "textoResumen": "Clase\n<span class=\"z\"><img src=x onerror=\"window.__x1=1\"><a id=\"evilLink\" href=\"https://evil.example/pago\">Pagá acá</a></span> con <img src=y onerror=\"window.__x2=1\">\nDía\nlunes 16/11 · 18:00 hs\nReserv",
+      "flags": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "F_preview_no_toca_red": {
+    "trackers": [],
+    "apps": [],
+    "otherExternal": [],
+    "posts": [],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "bannerVisible": true,
+      "resumen": "Clase\nPole sport con Verito\nDía\nlunes 16/11 · 19:00 hs\nReserva\nClase suelta\nPrecio\n$20.000\nSeña ahora\n$10.000\nSaldo a pagar en el estudio\n$10.000",
+      "codigo": "RES-9E6125",
+      "waHref": "https://wa.me/5491123978429?text=Hola%20Ara!%20Hice%20la%20reserva%20RES-9E6125%20en%20la%20web%3A%20Pole%20sport%2C%20lunes%2016%2F11%2019%3A00%20hs%2C%20clase%20suelta.%20Te%20mando%20el%20comprobante%20de%20la%20se%C3%B1a%20de%20%2410.000.",
+      "waTexto": "Hola Ara! Hice la reserva RES-9E6125 en la web: Pole sport, lunes 16/11 19:00 hs, clase suelta. Te mando el comprobante de la seña de $10.000.",
+      "err4": ""
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "G_POST_error_con_HTML": {
+    "trackers": [],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "POST script.google.com"
+    ],
+    "otherExternal": [],
+    "posts": [
+      {
+        "headers": "text/plain;charset=utf-8",
+        "body": {
+          "accion": "reservar",
+          "claseId": "ETR-001",
+          "fecha": "2026-11-16",
+          "modalidad": "suelta",
+          "plan": "",
+          "nombre": "Ana Prueba",
+          "whatsapp": "1123456789",
+          "adulto": "",
+          "web": "",
+          "acepto": true,
+          "consentimientoMedicion": "No"
+        }
+      }
+    ],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "bannerVisible": true,
+      "resumen": "Clase\nPole sport con Verito\nDía\nlunes 16/11 · 19:00 hs\nReserva\nClase suelta\nPrecio\n$20.000\nSeña ahora\n$10.000\nSaldo a pagar en el estudio\n$10.000",
+      "codigo": "",
+      "waHref": "http://127.0.0.1:8931/reservas.html#",
+      "waTexto": "",
+      "err4": "<img src=x onerror=\"window.__e=1\">Error",
+      "err4Hijos": 0,
+      "flag": 0
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "H_acro_infantil": {
+    "trackers": [],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "POST script.google.com"
+    ],
+    "otherExternal": [],
+    "posts": [
+      {
+        "headers": "text/plain;charset=utf-8",
+        "body": {
+          "accion": "reservar",
+          "claseId": "ETR-020",
+          "fecha": "2026-11-14",
+          "modalidad": "prueba",
+          "plan": "",
+          "nombre": "Nena Test",
+          "whatsapp": "1123456789",
+          "adulto": "Mamá Test",
+          "web": "",
+          "acepto": true,
+          "consentimientoMedicion": "No"
+        }
+      }
+    ],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "sinAdulto": {
+        "err3": "Poné el nombre de la persona adulta responsable."
+      },
+      "label": "Nombre y apellido de la nena o el nene",
+      "codigo": "RES-ABC123"
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "I_turnstile_activado_mock": {
+    "trackers": [],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "POST script.google.com"
+    ],
+    "otherExternal": [
+      "cloudflare(mock) /turnstile/v0/api.js"
+    ],
+    "posts": [
+      {
+        "headers": "text/plain;charset=utf-8",
+        "body": {
+          "accion": "reservar",
+          "claseId": "ETR-001",
+          "fecha": "2026-11-16",
+          "modalidad": "suelta",
+          "plan": "",
+          "nombre": "Ana Prueba",
+          "whatsapp": "1123456789",
+          "adulto": "",
+          "web": "",
+          "acepto": true,
+          "consentimientoMedicion": "No",
+          "turnstile": "tok-fake"
+        }
+      }
+    ],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "bannerVisible": true,
+      "resumen": "Clase\nPole sport con Verito\nDía\nlunes 16/11 · 19:00 hs\nReserva\nClase suelta\nPrecio\n$20.000\nSeña ahora\n$10.000\nSaldo a pagar en el estudio\n$10.000",
+      "codigo": "RES-ABC123",
+      "waHref": "https://wa.me/5491123978429?text=Hola%20Ara!%20Hice%20la%20reserva%20RES-ABC123%20en%20la%20web%3A%20Pole%20sport%2C%20lunes%2016%2F11%2019%3A00%20hs%2C%20clase%20suelta.%20Te%20mando%20el%20comprobante%20de%20la%20se%C3%B1a%20de%20%2410.000.",
+      "waTexto": "Hola Ara! Hice la reserva RES-ABC123 en la web: Pole sport, lunes 16/11 19:00 hs, clase suelta. Te mando el comprobante de la seña de $10.000.",
+      "err4": ""
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "J_turnstile_desactivado_no_carga_cloudflare": {
+    "trackers": [],
+    "apps": [
+      "GET script.google.com?accion=datos",
+      "POST script.google.com"
+    ],
+    "otherExternal": [],
+    "posts": [
+      {
+        "headers": "text/plain;charset=utf-8",
+        "body": {
+          "accion": "reservar",
+          "claseId": "ETR-001",
+          "fecha": "2026-11-16",
+          "modalidad": "suelta",
+          "plan": "",
+          "nombre": "Ana Prueba",
+          "whatsapp": "1123456789",
+          "adulto": "",
+          "web": "",
+          "acepto": true,
+          "consentimientoMedicion": "No"
+        }
+      }
+    ],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "bannerVisible": true,
+      "resumen": "Clase\nPole sport con Verito\nDía\nlunes 16/11 · 19:00 hs\nReserva\nClase suelta\nPrecio\n$20.000\nSeña ahora\n$10.000\nSaldo a pagar en el estudio\n$10.000",
+      "codigo": "RES-ABC123",
+      "waHref": "https://wa.me/5491123978429?text=Hola%20Ara!%20Hice%20la%20reserva%20RES-ABC123%20en%20la%20web%3A%20Pole%20sport%2C%20lunes%2016%2F11%2019%3A00%20hs%2C%20clase%20suelta.%20Te%20mando%20el%20comprobante%20de%20la%20se%C3%B1a%20de%20%2410.000.",
+      "waTexto": "Hola Ara! Hice la reserva RES-ABC123 en la web: Pole sport, lunes 16/11 19:00 hs, clase suelta. Te mando el comprobante de la seña de $10.000.",
+      "err4": ""
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "K_index_sin_consentimiento_utm": {
+    "trackers": [],
+    "apps": [],
+    "otherExternal": [],
+    "posts": [],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "noscript": 0,
+      "tailwindCDN": 0,
+      "tailwindEstatico": 1,
+      "wa": [
+        "https://wa.me/5491123978429?text=Hola Araceli! Vi la web y quiero reservar una clase de prueba. ¿Qué días tienen lugar? [web-meta · test]",
+        "https://wa.me/5491123978429?text=Hola Araceli! Vi la web y quiero reservar una clase de prueba. ¿Qué días tienen lugar? [web-meta · test]",
+        "https://wa.me/5491123978429?text=Hola Araceli! Vi la web y quiero reservar una clase de prueba. ¿Qué días tienen lugar? [web-meta · test]",
+        "https://wa.me/5491123978429?text=Hola Araceli! Vi la web y quiero consultar planes y valores. [web-meta · test]",
+        "https://wa.me/5491123978429?text=Hola Araceli! Vi la web y quiero reservar una clase de prueba. ¿Qué días tienen lugar? [web-meta · test]"
+      ],
+      "bannerTexto": "Usamos cookies de Meta y Google Analytics para medir visitas, anuncios y reservas (con tu WhatsApp cifrado), solo si aceptás. Más info",
+      "precio5000": false
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "L_privacidad_sin_consentimiento": {
+    "trackers": [],
+    "apps": [],
+    "otherExternal": [],
+    "posts": [],
+    "console": [],
+    "cspViolations": [],
+    "result": {
+      "banner": true,
+      "noscript": 0,
+      "texto": "Política de privacidad y cookies\n\nÚltima actualización: 10 de noviembre de 2026 · Versión del aviso: 2026-11-10\n\n1. Responsable de los datos\n\nEl responsable de los datos es «Espacio Éter» ([COMPLETAR: razón social o nombre y apellido del titular], CUIT [COMPLETAR: CUIT]), con domicilio en San Martín 39, primer piso, Ciudadela, Provincia de Buenos Aires. Contacto: WhatsApp +54 9 11 2397-8429, email [COMPLETAR: email de contacto]. Instagram: @espacioeter.\n\n2. Qué datos tratamos\n\nTratamos datos en tres casos: (a) si nos escribís por WhatsApp, tu nombre, tu número y lo que nos cuentes, solo para responderte y gestionar tu inscripción; (b) si reservás una clase en la página de reservas, los datos del formulario (ver sección 3); y (c) solo si aceptás las cookies de medición, datos de navegación que registran el Pixel de Meta y Google Analytics (ver secciones 4 a 6). Si rechazás las cookies, no se carga ningún script de Meta ni de Google para medir.\n\n3. Reservas online\n\nQué datos pedimos: nombre y apellido, número de WhatsApp, la clase, el día, la modalidad (clase de prueba, clase suelta o mes) y el plan que elegís y, en las clases de Acro infantil, el nombre de la persona adulta responsable. También guardamos la fecha y hora en que aceptaste este aviso y su versión. Si aceptaste las cookies de medición, guardamos además los identificadores de las cookies de Meta (_fbp y _fbc), la dirección de la página de reservas (sin parámetros) y los datos de tu navegador.\n\nPara qué: para registrar tu reserva, verificar el pago de la seña, confirmarte el lugar y escribirte por WhatsApp sobre esa reserva (cambios, reprogramaciones o cancelaciones). No usamos estos datos para otros fines ni los vendemos.\n\nDónde se guardan: en una planilla de Google Sheets y un script de Google Apps Script de la cuenta de Google del estudio. Google (Google LLC) actúa como proveedor de ese servicio. Solo acceden las personas del estudio que gestionan las reservas.\n\nAviso a Meta (solo con tu consentimiento): si aceptaste las cookies de medición, cuando confirmamos tu reserva le enviamos a Meta, por su API de Conversiones, tu número de WhatsApp cifrado con un hash SHA-256 (no se manda el número en claro), el código de la reserva, el tipo de clase, los identificadores de cookies y los datos del navegador, para medir los resultados de nuestros anuncios. Si rechazaste las cookies, no le mandamos nada a Meta. Podés cambiar tu elección en cualquier momento desde «Configurar cookies», al pie de la página; el cambio rige para las reservas que se confirmen después.\n\nMenores de edad (Acro infantil): la reserva la hace la persona adulta responsable, que carga el nombre de la niña o el niño, su propio nombre y su número de WhatsApp. Solo pedimos los datos necesarios para la reserva. Si quien reserva aceptó las cookies de medición, el aviso a Meta se hace con el WhatsApp de la persona adulta, nunca con datos de la niña o el niño.\n\nAntispam: para evitar abusos, el sistema limita la cantidad de reservas pendientes por número de WhatsApp y por hora. Si el formulario muestra una verificación anti-spam de Cloudflare Turnstile (Cloudflare, Inc.), esa verificación procesa datos técnicos de tu navegador y tu dirección IP según la política de privacidad de Cloudflare.\n\nCuánto tiempo los guardamos: [COMPLETAR: plazo de conservación] (propuesta a confirmar: 12 meses desde la fecha de la clase; después se borran o se anonimizan).\n\n4. Pixel y cookies de Meta\n\nSolo si aceptás las cookies, usamos el Pixel de Meta (Meta Platforms, Inc. / Meta Platforms Ireland Ltd.) para medir cuántas personas nos contactan o reservan desde nuestros anuncios en Facebook e Instagram y para mostrar esos anuncios a personas interesadas. Registra páginas vistas, clics en los botones de WhatsApp, pasos de la reserva, identificadores de cookies, dirección IP y datos del dispositivo y del navegador. Meta trata esos datos según su propia política (facebook.com/privacy/policy).\n\nCómo limitar la publicidad personalizada de Meta: en Facebook o Instagram, entrá a Configuración → Centro de cuentas → Preferencias de anuncios (Configuración de anuncios) y, en «Información sobre la actividad de socios publicitarios», podés desactivar que Meta use la actividad en sitios como este para mostrarte anuncios.\n\n5. Google Analytics\n\nSolo si aceptás las cookies, usamos Google Analytics 4 (Google LLC) para entender cómo se usa el sitio: cuántas visitas tenemos, de dónde viene cada visita (por ejemplo, la fuente o la campaña indicada en la dirección con parámetros UTM), cuántas personas tocan los botones de WhatsApp, qué horarios eligen en la grilla y los pasos de la reserva. No le mandamos a Google tu nombre, tu número ni el texto de los mensajes. Google trata esos datos según su política de privacidad y te explica cómo usa los datos de los sitios que usan sus servicios. También podés instalar el complemento de inhabilitación de Google Analytics.\n\n6. Cómo elegís y cambiás las cookies\n\nLa primera vez que entrás te mostramos un aviso con dos botones del mismo tamaño: «Aceptar» y «Rechazar». Hasta que aceptás, no se carga el Pixel de Meta ni Google Analytics. Guardamos tu elección en el almacenamiento local de tu navegador (eter_consent_v1) para no volver a preguntarte. Podés cambiarla cuando quieras desde «Configurar cookies», al pie de cada página. También podés borrar las cookies y los datos de sitios desde la configuración de tu navegador (por ejemplo, en Chrome: Configuración → Privacidad y seguridad; en Safari: Ajustes → Safari; en Firefox: Ajustes → Privacidad y seguridad) o navegar en modo incógnito o privado.\n\n7. Transferencia internacional\n\nGoogle (Google Sheets, Apps Script, Analytics y Maps) y Meta guardan y procesan los datos en servidores que pueden estar fuera de Argentina, por ejemplo en los Estados Unidos. Al usar sus servicios, tus datos pueden transferirse a esos países, donde quedan sujetos a las políticas de privacidad y a las condiciones de esos proveedores.\n\n8. Otros servicios de terceros\n\nEl mapa de ubicación es un servicio de Google Maps insertado; Google puede registrar tu IP y usar sus propias cookies según su política de privacidad. Las tipografías se sirven desde este mismo sitio: no usamos Google Fonts.\n\n9. Fotos\n\nLas imágenes de alumnas se publican con su consentimiento. Si aparecés y querés que la retiremos, escribinos.\n\n10. Tus derechos (Ley 25.326 de Protección de Datos Personales)\n\nPodés pedir acceso, rectificación, actualización o supresión de tus datos (incluidos los de tus reservas) escribiéndonos por WhatsApp a +54 9 11 2397-8429 o por email a [COMPLETAR: email de contacto]. Respondemos los pedidos de acceso dentro de los 10 días corridos y los de rectificación o supresión dentro de los 5 días hábiles. El acceso es gratuito en intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo (art. 14, inc. 3, Ley 25.326).\n\nLA AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.\n\nVolver al inicio",
+      "csp": "default-src 'self'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.facebook.com https://connect.facebook.net https://www.googletagmanager.com https://*.google-analytics.com; frame-src https://www.google.com https://www.facebook.com; connect-src https://www.facebook.com https://connect.facebook.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action https://www.facebook.com; object-src 'none'; base-uri 'self'; upgrade-insecure-requests",
+      "configurar": 1
+    },
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {}
+  },
+  "M_privacidad_con_consentimiento": {
+    "trackers": [
+      "GET connect.facebook.net/en_US/fbevents.js",
+      "GET www.googletagmanager.com/gtag/js"
+    ],
+    "apps": [],
+    "otherExternal": [],
+    "posts": [],
+    "console": [
+      "error: Failed to load resource: net::ERR_FAILED",
+      "error: Failed to load resource: net::ERR_FAILED"
+    ],
+    "cspViolations": [],
+    "result": {},
+    "cspEvents": [],
+    "cookies": [],
+    "ls": {
+      "eter_consent_v1": "granted"
+    }
+  }
+}

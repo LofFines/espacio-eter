@@ -58,3 +58,5 @@ input[type=text], input[type=tel] { width: 100%; padding: 12px; border-radius: 1
 .nota { font-size: 12px; color: rgba(255,255,255,.65); }
 .debug { max-width: 760px; margin: 0 auto 16px; max-height: 220px; overflow: auto; background: rgba(0,0,0,.85); color: #a3e635; font: 11px/1.4 monospace; padding: 8px; border-radius: 8px; z-index: 50; }
 .oculto { display: none !important; }
+/* Mientras el aviso de cookies está abierto, dejar lugar abajo para que no tape los botones del formulario. */
+body:has(.eter-consent:not([hidden])) { padding-bottom: 190px; }

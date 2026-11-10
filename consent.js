@@ -24,7 +24,8 @@
     box.setAttribute('aria-describedby', 'eterConsentText');
     box.hidden = true;
     box.innerHTML =
-      '<p id="eterConsentText">Usamos cookies de Meta y Google Analytics para medir visitas y anuncios, solo si aceptás. ' +
+      // Si reservás y aceptaste, al confirmarse la reserva se le avisa a Meta con el WhatsApp cifrado (hash SHA-256).
+      '<p id="eterConsentText">Usamos cookies de Meta y Google Analytics para medir visitas, anuncios y reservas (con tu WhatsApp cifrado), solo si aceptás. ' +
       '<a href="privacidad.html">Más info</a></p>' +
       '<div class="eter-consent-btns">' +
       '<button type="button" data-consent="denied">Rechazar</button>' +

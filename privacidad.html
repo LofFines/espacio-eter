@@ -3,46 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://connect.facebook.net; frame-src https://www.google.com https://www.facebook.com; connect-src https://www.facebook.com https://connect.facebook.net; form-action https://www.facebook.com; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" />
+  <!-- Misma CSP y misma lógica de consentimiento que index.html: pixel.js y ga4.js no hacen nada sin «Aceptar» (consent.js). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.facebook.com https://connect.facebook.net https://www.googletagmanager.com https://*.google-analytics.com; frame-src https://www.google.com https://www.facebook.com; connect-src https://www.facebook.com https://connect.facebook.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action https://www.facebook.com; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="robots" content="noindex" />
   <link rel="icon" href="data:," />
   <title>Política de privacidad y cookies | Espacio Éter</title>
-  <script src="pixel.js"></script>
   <link rel="stylesheet" href="tailwind.min.css" />
+  <link rel="stylesheet" href="consent.css" />
+  <script src="pixel.js"></script>
 </head>
 <body class="bg-[#161332] text-white/90 font-sans">
 <main class="max-w-2xl mx-auto px-5 py-10 text-sm leading-relaxed space-y-4">
   <h1 class="text-2xl font-bold">Política de privacidad y cookies</h1>
-  <p class="text-white/60">Última actualización: 3 de noviembre de 2026</p>
+  <p class="text-white/60">Última actualización: 10 de noviembre de 2026 · Versión del aviso: 2026-11-10</p>
 
   <h2 class="text-lg font-bold">1. Responsable de los datos</h2>
-  <p>El responsable de los datos es «Espacio Éter», con domicilio en San Martín 39, primer piso, Ciudadela, Provincia de Buenos Aires. Contacto: WhatsApp <a href="https://wa.me/5491123978429" target="_blank" rel="noopener noreferrer" class="underline">+54 9 11 2397-8429</a>. Instagram: @espacioeter.</p>
+  <p>El responsable de los datos es Espacio Éter (estudio de pole, acro, flexibilidad y danza), San Martín 39, Ciudadela, Provincia de Buenos Aires. Contacto: WhatsApp <a href="https://wa.me/5491123978429" target="_blank" rel="noopener noreferrer" class="underline">+54 9 11 2397-8429</a>. Instagram: @espacioeter.</p>
 
   <h2 class="text-lg font-bold">2. Qué datos tratamos</h2>
-  <p>Este sitio no tiene formularios. Si nos escribís por WhatsApp, tratamos tu nombre, tu número y lo que nos cuentes, solo para responderte y gestionar tu inscripción. Además, el Pixel de Meta registra datos de navegación: páginas vistas, clics en los botones de WhatsApp, identificadores de cookies, dirección IP y datos del dispositivo y navegador. Google Analytics, por su parte, mide las visitas, de dónde vienen (fuente o campaña UTM), los clics en los botones de WhatsApp y los horarios que elegís en la grilla, sin datos personales ni el texto de los mensajes (ver sección 4).</p>
+  <p>Tratamos datos en tres casos: (a) si nos escribís por WhatsApp, tu nombre, tu número y lo que nos cuentes, solo para responderte y gestionar tu inscripción; (b) si reservás una clase en la página de reservas, los datos del formulario (ver sección 3); y (c) solo si aceptás las cookies de medición, datos de navegación que registran el Pixel de Meta y Google Analytics (ver secciones 4 a 6). Si rechazás las cookies, no se carga ningún script de Meta ni de Google para medir.</p>
 
-  <h2 class="text-lg font-bold">3. Pixel y cookies de Meta</h2>
-  <p>Usamos el Pixel de Meta (Meta Platforms, Inc. / Meta Platforms Ireland Ltd.) para medir cuántas personas nos contactan desde nuestros anuncios en Facebook e Instagram y para mostrar esos anuncios a personas interesadas. Meta trata esos datos según su propia política (facebook.com/privacy/policy) y pueden transferirse a servidores fuera de Argentina.</p>
-  <p><strong>Cómo desactivar o borrar las cookies:</strong> desde la configuración de tu navegador (por ejemplo, en Chrome: Configuración → Privacidad y seguridad → Cookies de terceros; en Safari: Ajustes → Safari → Bloquear todas las cookies; en Firefox: Ajustes → Privacidad y seguridad) podés bloquear las cookies de terceros y borrar las cookies y datos de sitios ya guardados. También podés navegar en modo incógnito o privado.</p>
+  <h2 id="reservas" class="text-lg font-bold">3. Reservas online</h2>
+  <p><strong>Qué datos pedimos:</strong> nombre y apellido, número de WhatsApp, la clase, el día, la modalidad (clase de prueba, clase suelta o mes) y el plan que elegís y, en las clases de Acro infantil, el nombre de la persona adulta responsable. También guardamos la fecha y hora en que aceptaste este aviso y su versión. Si aceptaste las cookies de medición, guardamos además los identificadores de las cookies de Meta (_fbp y _fbc), la dirección de la página de reservas (sin parámetros) y los datos de tu navegador.</p>
+  <p><strong>Para qué:</strong> para registrar tu reserva, verificar el pago de la seña, confirmarte el lugar y escribirte por WhatsApp sobre esa reserva (cambios, reprogramaciones o cancelaciones). No usamos estos datos para otros fines ni los vendemos.</p>
+  <p><strong>Dónde se guardan:</strong> en una planilla de Google Sheets y un script de Google Apps Script de la cuenta de Google del estudio. Google (Google LLC) actúa como proveedor de ese servicio. Solo acceden las personas del estudio que gestionan las reservas.</p>
+  <p><strong>Aviso a Meta (solo con tu consentimiento):</strong> si aceptaste las cookies de medición, cuando confirmamos tu reserva le enviamos a Meta, por su API de Conversiones, tu número de WhatsApp cifrado con un hash SHA-256 (no se manda el número en claro), el código de la reserva, el tipo de clase, los identificadores de cookies y los datos del navegador, para medir los resultados de nuestros anuncios. Si rechazaste las cookies, no le mandamos nada a Meta. Podés cambiar tu elección en cualquier momento desde «Configurar cookies», al pie de la página; el cambio rige para las reservas que se confirmen después.</p>
+  <p><strong>Menores de edad (Acro infantil):</strong> la reserva la hace la persona adulta responsable, que carga el nombre de la niña o el niño, su propio nombre y su número de WhatsApp. Al marcar «Acepto», la persona adulta declara que es responsable de la niña o el niño y presta el consentimiento por ella o él para el tratamiento de estos datos. Solo pedimos los datos necesarios para la reserva. Si quien reserva aceptó las cookies de medición, el aviso a Meta se hace con el WhatsApp de la persona adulta, nunca con datos de la niña o el niño.</p>
+  <p><strong>Antispam:</strong> para evitar abusos, el sistema limita la cantidad de reservas pendientes por número de WhatsApp y por hora. Si el formulario muestra una verificación anti-spam de Cloudflare Turnstile (Cloudflare, Inc.), esa verificación procesa datos técnicos de tu navegador y tu dirección IP según la política de privacidad de Cloudflare.</p>
+  <p><strong>Cuánto tiempo los guardamos:</strong> 12 meses desde tu última reserva o clase; después se borran o se anonimizan.</p>
+
+  <h2 class="text-lg font-bold">4. Pixel y cookies de Meta</h2>
+  <p>Solo si aceptás las cookies, usamos el Pixel de Meta (Meta Platforms, Inc. / Meta Platforms Ireland Ltd.) para medir cuántas personas nos contactan o reservan desde nuestros anuncios en Facebook e Instagram y para mostrar esos anuncios a personas interesadas. Registra páginas vistas, clics en los botones de WhatsApp, pasos de la reserva, identificadores de cookies, dirección IP y datos del dispositivo y del navegador. Meta trata esos datos según su propia política (facebook.com/privacy/policy).</p>
   <p><strong>Cómo limitar la publicidad personalizada de Meta:</strong> en Facebook o Instagram, entrá a Configuración → Centro de cuentas → Preferencias de anuncios (Configuración de anuncios) y, en «Información sobre la actividad de socios publicitarios», podés desactivar que Meta use la actividad en sitios como este para mostrarte anuncios.</p>
 
-  <h2 class="text-lg font-bold">4. Google Analytics</h2>
-  <p>Usamos Google Analytics 4 (Google LLC) para entender cómo se usa el sitio: cuántas visitas tenemos, de dónde viene cada visita (por ejemplo, la fuente o la campaña indicada en la dirección con parámetros UTM), cuántas personas tocan los botones de WhatsApp y qué horarios eligen en la grilla. No medimos datos personales como tu nombre o tu número, ni el texto de los mensajes que nos mandás. Google trata esos datos según su <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="underline">política de privacidad</a> y te explica <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" class="underline">cómo usa los datos de los sitios que usan sus servicios</a>.</p>
-  <p><strong>Cómo desactivarlo:</strong> podés instalar el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="underline">complemento de inhabilitación de Google Analytics</a> o bloquear las cookies desde la configuración de tu navegador, como se explica en la sección anterior.</p>
+  <h2 class="text-lg font-bold">5. Google Analytics</h2>
+  <p>Solo si aceptás las cookies, usamos Google Analytics 4 (Google LLC) para entender cómo se usa el sitio: cuántas visitas tenemos, de dónde viene cada visita (por ejemplo, la fuente o la campaña indicada en la dirección con parámetros UTM), cuántas personas tocan los botones de WhatsApp, qué horarios eligen en la grilla y los pasos de la reserva. No le mandamos a Google tu nombre, tu número ni el texto de los mensajes. Google trata esos datos según su <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="underline">política de privacidad</a> y te explica <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" class="underline">cómo usa los datos de los sitios que usan sus servicios</a>. También podés instalar el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="underline">complemento de inhabilitación de Google Analytics</a>.</p>
 
-  <h2 class="text-lg font-bold">5. Otros servicios de terceros</h2>
-  <p>El mapa de ubicación es un servicio de Google Maps insertado, y las tipografías se cargan desde Google Fonts; Google puede registrar tu IP y usar sus propias cookies según su política de privacidad.</p>
+  <h2 class="text-lg font-bold">6. Cómo elegís y cambiás las cookies</h2>
+  <p>La primera vez que entrás te mostramos un aviso con dos botones del mismo tamaño: «Aceptar» y «Rechazar». Hasta que aceptás, no se carga el Pixel de Meta ni Google Analytics. Guardamos tu elección en el almacenamiento local de tu navegador (eter_consent_v1) para no volver a preguntarte. Podés cambiarla cuando quieras desde «Configurar cookies», al pie de cada página. También podés borrar las cookies y los datos de sitios desde la configuración de tu navegador (por ejemplo, en Chrome: Configuración → Privacidad y seguridad; en Safari: Ajustes → Safari; en Firefox: Ajustes → Privacidad y seguridad) o navegar en modo incógnito o privado.</p>
 
-  <h2 class="text-lg font-bold">6. Fotos</h2>
+  <h2 class="text-lg font-bold">7. Transferencia internacional</h2>
+  <p>Google (Google Sheets, Apps Script, Analytics y Maps) y Meta guardan y procesan los datos en servidores que pueden estar fuera de Argentina, por ejemplo en los Estados Unidos. Al usar sus servicios, tus datos pueden transferirse a esos países, donde quedan sujetos a las políticas de privacidad y a las condiciones de esos proveedores.</p>
+
+  <h2 class="text-lg font-bold">8. Otros servicios de terceros</h2>
+  <p>El mapa de ubicación es un servicio de Google Maps insertado; Google puede registrar tu IP y usar sus propias cookies según su política de privacidad. Las tipografías se sirven desde este mismo sitio: no usamos Google Fonts.</p>
+
+  <h2 class="text-lg font-bold">9. Fotos</h2>
   <p>Las imágenes de alumnas se publican con su consentimiento. Si aparecés y querés que la retiremos, escribinos.</p>
 
-  <h2 class="text-lg font-bold">7. Tus derechos (Ley 25.326 de Protección de Datos Personales)</h2>
-  <p>Podés pedir acceso, rectificación, actualización o supresión de tus datos escribiéndonos por WhatsApp a <a href="https://wa.me/5491123978429" target="_blank" rel="noopener noreferrer" class="underline">+54 9 11 2397-8429</a>. Respondemos los pedidos de acceso dentro de los 10 días corridos y los de rectificación o supresión dentro de los 5 días hábiles. El acceso es gratuito en intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo (art. 14, inc. 3, Ley 25.326).</p>
+  <h2 class="text-lg font-bold">10. Tus derechos (Ley 25.326 de Protección de Datos Personales)</h2>
+  <p>Podés pedir acceso, rectificación, actualización o supresión de tus datos (incluidos los de tus reservas) escribiéndonos por WhatsApp a <a href="https://wa.me/5491123978429" target="_blank" rel="noopener noreferrer" class="underline">+54 9 11 2397-8429</a>. Respondemos los pedidos de acceso dentro de los 10 días corridos y los de rectificación o supresión dentro de los 5 días hábiles. El acceso es gratuito en intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo (art. 14, inc. 3, Ley 25.326).</p>
   <p>LA AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
 
   <p><a href="./" class="underline">Volver al inicio</a></p>
 </main>
-<footer class="max-w-2xl mx-auto px-5 pb-10 text-xs text-white/60"><p>Espacio Éter • San Martín 39, primer piso, Ciudadela · <a href="privacidad.html" class="underline hover:text-white">Política de privacidad y cookies</a></p></footer>
+<footer class="max-w-2xl mx-auto px-5 pb-10 text-xs text-white/60"><p>Espacio Éter • San Martín 39, primer piso, Ciudadela · <a href="privacidad.html" class="underline hover:text-white">Política de privacidad y cookies</a> · <button type="button" data-consent-open class="underline hover:text-white">Configurar cookies</button></p></footer>
+<script src="./consent.js" defer></script>
+<script src="./ga4.js" defer></script>
 </body>
 </html>
