@@ -11,6 +11,8 @@ PASS  10 día de la semana que no coincide con la clase → Fecha inválida
 PASS  11 body null / "" / array / número / JSON inválido → JSON de error genérico, sin excepción
 PASS  12 postData ausente → JSON de error, sin excepción
 PASS  13 body de 5 KB → rechazado antes de parsear
+PASS  13b body de 10 KB (nombre =HYPERLINK repetido) → rechazado, sin fila
+PASS  13c honeypot + duplicado + plan inventado + 2099 + +002026 en ráfaga → 1 sola fila (la válida)
 PASS  14 plan objeto / array / 2 MB → rechazado
 PASS  15 plan inexistente → Plan inválido; plan válido → precio de la planilla y plan de la planilla
 PASS  16 clase suelta en disciplina sin precio de suelta (Funcional) → rechazada
@@ -43,4 +45,4 @@ PASS  42 celda_(): neutraliza = + - @ tab CR, controles y recorta
 PASS  43 ninguna fila escrita en todas las pruebas válidas tiene celdas que Sheets tome como fórmula
 PASS  44 vencerPendientes(): marca vencidas las de clase pasada o >48 h
 PASS  45 no usa openById (script vinculado + @OnlyCurrentDoc)
-Resultado: 45 PASS, 0 FAIL (fechas de prueba: lunes 2026-11-16, sábado 2026-11-14; 2026-11-10T21:23:47.524Z)
+Resultado: 47 PASS, 0 FAIL (fechas de prueba: lunes 2026-11-16, sábado 2026-11-14; 2026-11-10T22:23:35.946Z)

@@ -3,7 +3,7 @@
 **Estado real (10/11/2026):**
 - El Apps Script **ya está implementado como aplicación web** (ejecutar como Leandro, acceso «Cualquier usuario») y su URL `/exec` está en `reservas.js` → `CONFIG.API_URL`. El repo es público, así que esa URL es pública.
 - El código de **esa implementación es el viejo** (sin saneo de fórmulas ni antiabuso). Este `Code.gs` corregido **no llega a producción hasta que alguien lo pega en el editor y vuelve a implementar** (ver «Despliegue seguro»).
-- `reservas.html` no está enlazada desde la landing, pero si la rama se mergea queda accesible en `https://espacioeter.com.ar/reservas.html` (el `noindex` no la oculta) y desde ese momento escribe en la planilla real.
+- En esta rama `reservas.html` **ya está enlazada desde la landing** (botón «Reservá tu clase online» en el hero, `#heroReservaBtn`, y link debajo de la grilla, `#grillaReservaLink`). Si la rama se mergea a `main`, la página queda publicada y desde ese momento escribe en la planilla real: **no mergear antes de volver a implementar el Apps Script con este `Code.gs`**.
 - Modo preview (sin escribir nada): `reservas.html?preview=1`, o dejar `CONFIG.API_URL: ''`.
 
 ## Despliegue seguro (lo hace Leandro, a mano)
@@ -57,11 +57,12 @@ Mientras `TURNSTILE_SECRET` no exista, el servidor no lo exige; mientras la site
 | Abre WhatsApp | Contact (pixel.js) | clic_whatsapp (ga4.js) |
 | Ara confirma | Schedule (API de Conversiones, desde el script) | — |
 
-## Pendiente para enlazarlo desde la landing (con OK de Leandro)
+## Pendiente antes de publicar (con OK de Leandro)
 1. Completar «Alumnas fijas» (columna L de Grilla) en las clases de Pole.
 2. Hacer el «Despliegue seguro» de arriba.
 3. ~~Completar en `privacidad.html` los datos del responsable y el plazo~~ — hecho el 10/11 (sin razón social ni CUIT por decisión de Leandro; sin email porque el estudio no publica uno; plazo: 12 meses).
-4. Enlazar `reservas.html` desde la landing.
+4. ~~Enlazar `reservas.html` desde la landing~~ — hecho en esta rama (hero y grilla de `index.html`).
+5. Verificar que el proyecto de Apps Script sea el **vinculado** a la planilla (se abre desde la planilla → Extensiones → Apps Script): el código usa `getActiveSpreadsheet()` + `@OnlyCurrentDoc` y en un proyecto suelto todas las reservas darían «Error interno».
 
 ## Aviso a Meta cuando Ara confirma (API de Conversiones)
 - Al reservar, si la persona aceptó cookies, se guardan en la fila `_fbp`, `_fbc` (o se arma desde el `fbclid` del anuncio), la URL sin parámetros y el navegador. Sin consentimiento no se guarda nada de eso ni se avisa a Meta.

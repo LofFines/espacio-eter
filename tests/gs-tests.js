@@ -46,6 +46,11 @@ t('11 body null / "" / array / número / JSON inválido → JSON de error genér
 });
 t('12 postData ausente → JSON de error, sin excepción', () => { const s = mk(); const r = JSON.parse(s.ctx.doPost({}).t); const r2 = JSON.parse(s.ctx.doPost(undefined).t); return ok(!r.ok && !r2.ok, [r, r2]); });
 t('13 body de 5 KB → rechazado antes de parsear', () => { const s = mk(); const r = s.post({ ...base, nombre: 'A'.repeat(5 * 1024) }); return ok(!r.ok && r.error === 'Datos inválidos.' && !s.reservas().length, r); });
+t('13b body de 10 KB (nombre =HYPERLINK repetido) → rechazado, sin fila', () => { const s = mk(); const r = s.post({ ...base, nombre: '=HYPERLINK("https://e.vil";"PAGADO")'.repeat(300) }); return ok(!r.ok && r.error === 'Datos inválidos.' && !s.reservas().length, r); });
+t('13c honeypot + duplicado + plan inventado + 2099 + +002026 en ráfaga → 1 sola fila (la válida)', () => {
+  const s = mk(); const rs = [s.post(base), s.post({ ...base, whatsapp: '+54 9 11 2345-6789' }), s.post({ ...base, web: 'x' }), s.post({ ...base, modalidad: 'mes', plan: 'Plan inventado' }), s.post({ ...base, fecha: '2099-11-16' }), s.post({ ...base, fecha: '+00' + LUN })];
+  return ok(rs[0].ok && !rs[1].ok && rs[2].ok && !rs[3].ok && !rs[4].ok && !rs[5].ok && s.reservas().length === 1, rs);
+});
 t('14 plan objeto / array / 2 MB → rechazado', () => { const s = mk(); const rs = [{ a: 1 }, ['=1+1'], 'A'.repeat(2 * 1024 * 1024)].map(p => s.post({ ...base, modalidad: 'mes', plan: p })); return ok(rs.every(r => !r.ok) && !s.reservas().length, rs); });
 t('15 plan inexistente → Plan inválido; plan válido → precio de la planilla y plan de la planilla', () => {
   const s = mk(); const r = s.post({ ...base, modalidad: 'mes', plan: 'Plan inventado' }); const r2 = s.post({ ...base, modalidad: 'mes', plan: '2 veces por semana' }); const f = s.reservas()[0];
