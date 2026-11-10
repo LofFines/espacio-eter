@@ -12,6 +12,11 @@
  *  - Combo: 3 disciplinas, 10% de descuento.
  * Modo preview (?preview=1 o sin API_URL): usa reservas-data.js, no guarda nada y los eventos solo
  * se muestran en un panel en pantalla (no se mandan a Meta ni a Google).
+ *
+ * ESTADO REAL: CONFIG.API_URL apunta a la implementación /exec del Apps Script que YA está activa
+ * (acceso «Cualquier usuario»). Si se crea una implementación nueva, la URL cambia y hay que actualizarla acá.
+ * Seguridad: el DOM se arma con createElement/textContent (nada de innerHTML con datos); toda la validación
+ * real la hace el servidor (apps-script/Code.gs). Captcha opcional: TURNSTILE_SITEKEY (vacío = desactivado).
  */
 (function () {
   'use strict';
@@ -22,7 +27,10 @@
     SENA: 10000,
     ALIAS: 'espacioeter.mp',
     TITULAR: 'Araceli Meli',
-    DIAS_A_MOSTRAR: 14
+    DIAS_A_MOSTRAR: 14,
+    // Cloudflare Turnstile (opcional). Vacío = desactivado. Si se completa, hay que cargar TURNSTILE_SECRET en
+    // Propiedades del script y sumar https://challenges.cloudflare.com a script-src y frame-src en la CSP de reservas.html.
+    TURNSTILE_SITEKEY: ''
   };
   var qs = new URLSearchParams(location.search);
   var PREVIEW = qs.get('preview') === '1' || !CONFIG.API_URL;
@@ -31,7 +39,7 @@
   var FILTROS = { todas: null, pole: /^pole/i, baile: /salsa|bachata/i, complemento: /funcional|flexi|acro/i };
 
   var datos = null;
-  var st = { clase: null, fecha: null, modalidad: null, plan: null, nombre: '', whatsapp: '', adulto: '' };
+  var st = { clase: null, fecha: null, modalidad: null, plan: null, nombre: '', whatsapp: '', adulto: '', turnstile: '' };
   var $ = function (id) { return document.getElementById(id); };
   var pesos = function (n) { return '$' + Number(n).toLocaleString('es-AR'); };
 
@@ -81,10 +89,10 @@
     return Math.max(0, Number(clase.cupo) - Number(clase.fijas || 0) - confirmadas(clase.id, iso));
   }
   function badge(n) {
-    if (n === null) return '<span class="badge">Cupo amplio</span>';
-    if (n === 0) return '<span class="badge lleno">Completa</span>';
-    if (n <= 2) return '<span class="badge pocos">Quedan ' + n + '</span>';
-    return '<span class="badge">' + n + ' lugares</span>';
+    if (n === null) return el('span', { class: 'badge' }, ['Cupo amplio']);
+    if (n === 0) return el('span', { class: 'badge lleno' }, ['Completa']);
+    if (n <= 2) return el('span', { class: 'badge pocos' }, ['Quedan ' + n]);
+    return el('span', { class: 'badge' }, [n + ' lugares']);
   }
   function proximasFechas(clase) {
     var out = [], hoy = new Date(), idx = DIAS.indexOf(clase.dia);
@@ -100,29 +108,43 @@
   function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
   function fechaLarga(d) { return DIAS[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1); }
   function preciosDe(disc) { return datos.precios.filter(function (p) { return p.disciplina === disc; }); }
-  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  // Arma nodos sin innerHTML: los textos van siempre como textContent (no se interpretan como HTML).
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      var v = attrs[k];
+      if (v === false || v == null) return;
+      if (k === 'class') n.className = v; else n.setAttribute(k, v === true ? '' : String(v));
+    });
+    (kids || []).forEach(function (k) { if (k != null) n.appendChild(typeof k === 'string' || typeof k === 'number' ? document.createTextNode(String(k)) : k); });
+    return n;
+  }
+  function poner(id, nodos) { var c = $(id); c.textContent = ''; (Array.isArray(nodos) ? nodos : [nodos]).forEach(function (x) { c.appendChild(x); }); }
 
   // ---------- Paso 1: grilla ----------
   var filtroActual = 'todas', vioGrilla = false;
   function pintarFiltros() {
-    $('filtros').innerHTML = Object.keys(FILTROS).map(function (k) {
-      return '<button type="button" class="chip' + (k === filtroActual ? ' on' : '') + '" data-filtro="' + k + '">' + k[0].toUpperCase() + k.slice(1) + '</button>';
-    }).join('');
+    poner('filtros', Object.keys(FILTROS).map(function (k) {
+      return el('button', { type: 'button', class: 'chip' + (k === filtroActual ? ' on' : ''), 'data-filtro': k }, [k[0].toUpperCase() + k.slice(1)]);
+    }));
   }
   function pintarGrilla() {
-    var re = FILTROS[filtroActual], html = '';
+    var re = FILTROS[filtroActual], bloques = [];
     ORDEN_DIAS.forEach(function (dia) {
       var cl = datos.clases.filter(function (c) { return c.dia === dia && (!re || re.test(c.disciplina)); })
         .sort(function (a, b) { return a.inicio.localeCompare(b.inicio); });
       if (!cl.length) return;
-      html += '<div class="dia"><h3>' + dia + '</h3>' + cl.map(function (c) {
+      bloques.push(el('div', { class: 'dia' }, [el('h3', {}, [dia])].concat(cl.map(function (c) {
         var f = proximasFechas(c)[0];
         var n = f ? lugares(c, iso(f)) : null;
-        return '<button type="button" class="clase" data-clase="' + esc(c.id) + '"><span class="hora">' + esc(c.inicio) + '–' + esc(c.fin) + '</span>' +
-          '<span class="nom">' + esc(c.disciplina) + '<small>' + esc(c.profe) + (c.nivel ? ' · ' + esc(c.nivel) : '') + '</small></span>' + badge(n) + '</button>';
-      }).join('') + '</div>';
+        return el('button', { type: 'button', class: 'clase', 'data-clase': c.id }, [
+          el('span', { class: 'hora' }, [c.inicio + '–' + c.fin]),
+          el('span', { class: 'nom' }, [c.disciplina, el('small', {}, [c.profe + (c.nivel ? ' · ' + c.nivel : '')])]),
+          badge(n)
+        ]);
+      }))));
     });
-    $('grilla').innerHTML = html || '<p class="nota">No hay clases para este filtro.</p>';
+    poner('grilla', bloques.length ? bloques : el('p', { class: 'nota' }, ['No hay clases para este filtro.']));
   }
 
   // ---------- Paso 2 ----------
@@ -132,13 +154,16 @@
     st.fecha = null; st.modalidad = null; st.plan = null;
     track('ViewContent', 'eligio_horario', { content_name: st.clase.disciplina + ' ' + st.clase.dia + ' ' + st.clase.inicio, content_category: 'Reserva' });
     $('claseElegida').textContent = st.clase.disciplina + ' · ' + st.clase.dia + ' ' + st.clase.inicio + ' a ' + st.clase.fin + ' · con ' + st.clase.profe;
-    $('fechas').innerHTML = proximasFechas(st.clase).map(function (d) {
+    var fechas = proximasFechas(st.clase).map(function (d) {
       var n = lugares(st.clase, iso(d)), lleno = n === 0;
-      return '<label class="opcion' + (lleno ? ' dis' : '') + '"><input type="radio" name="fecha" value="' + iso(d) + '"' + (lleno ? ' disabled' : '') + ' />' +
-        '<div><strong>' + fechaLarga(d) + ' · ' + esc(st.clase.inicio) + ' hs</strong><span>' + (n === null ? 'Cupo amplio' : n === 0 ? 'Completa' : 'Quedan ' + n + ' lugares') + '</span></div></label>';
-    }).join('') || '<p class="nota">No hay fechas disponibles en las próximas 2 semanas.</p>';
+      return el('label', { class: 'opcion' + (lleno ? ' dis' : '') }, [
+        el('input', { type: 'radio', name: 'fecha', value: iso(d), disabled: lleno }),
+        el('div', {}, [el('strong', {}, [fechaLarga(d) + ' · ' + st.clase.inicio + ' hs']), el('span', {}, [n === null ? 'Cupo amplio' : n === 0 ? 'Completa' : 'Quedan ' + n + ' lugares'])])
+      ]);
+    });
+    poner('fechas', fechas.length ? fechas : el('p', { class: 'nota' }, ['No hay fechas disponibles en las próximas 2 semanas.']));
     var pr = preciosDe(st.clase.disciplina);
-    var hayPrueba = st.clase.prueba !== false;
+    var hayPrueba = st.clase.prueba === true;
     var haySuelta = pr.some(function (p) { return /suelta/i.test(p.plan); });
     var hayMes = pr.some(function (p) { return !/suelta/i.test(p.plan); });
     var mods = [
@@ -146,11 +171,17 @@
       ['suelta', 'Clase suelta', 'Venís a esta clase puntual.', haySuelta],
       ['mes', 'El mes', 'Te anotás con plan mensual desde esta fecha.', hayMes]
     ];
-    $('modalidades').innerHTML = mods.map(function (m) {
-      return '<label class="opcion' + (m[3] ? '' : ' dis') + '"><input type="radio" name="modalidad" value="' + m[0] + '"' + (m[3] ? '' : ' disabled') + ' />' +
-        '<div><strong>' + m[1] + '</strong><span>' + (m[3] ? m[2] : 'No disponible para esta disciplina.') + '</span></div></label>';
-    }).join('');
-    $('adultoBox').classList.toggle('oculto', !/infantil/i.test(st.clase.disciplina));
+    poner('modalidades', mods.map(function (m) {
+      return el('label', { class: 'opcion' + (m[3] ? '' : ' dis') }, [
+        el('input', { type: 'radio', name: 'modalidad', value: m[0], disabled: !m[3] }),
+        el('div', {}, [el('strong', {}, [m[1]]), el('span', {}, [m[3] ? m[2] : 'No disponible para esta disciplina.'])])
+      ]);
+    }));
+    var infantil = /infantil/i.test(st.clase.disciplina);
+    $('adultoBox').classList.toggle('oculto', !infantil);
+    // En Acro infantil reserva la persona adulta: el nombre es de la nena o el nene y el WhatsApp, del adulto.
+    document.querySelector('label[for=nombre]').textContent = infantil ? 'Nombre y apellido de la nena o el nene' : 'Nombre y apellido';
+    document.querySelector('label[for=whatsapp]').textContent = infantil ? 'WhatsApp de la persona adulta responsable' : 'WhatsApp';
     ir(2);
   }
 
@@ -160,10 +191,12 @@
     $('planesBox').classList.toggle('oculto', st.modalidad !== 'mes');
     if (st.modalidad === 'mes') {
       var planes = pr.filter(function (p) { return !/suelta/i.test(p.plan); });
-      $('planes').innerHTML = planes.map(function (p, i) {
-        return '<label class="opcion"><input type="radio" name="plan" value="' + esc(p.plan) + '"' + ((st.plan ? st.plan === p.plan : i === 0) ? ' checked' : '') + ' />' +
-          '<div><strong>' + esc(p.plan) + '</strong><span>' + pesos(p.precio) + ' por mes</span></div></label>';
-      }).join('');
+      poner('planes', planes.map(function (p, i) {
+        return el('label', { class: 'opcion' }, [
+          el('input', { type: 'radio', name: 'plan', value: p.plan, checked: st.plan ? st.plan === p.plan : i === 0 }),
+          el('div', {}, [el('strong', {}, [p.plan]), el('span', {}, [pesos(p.precio) + ' por mes'])])
+        ]);
+      }));
       if (!st.plan && planes[0]) st.plan = planes[0].plan;
       var cb = datos.combo;
       $('comboNota').textContent = cb ? 'Combo: si te anotás en ' + cb.disciplinas + ' disciplinas tenés ' + cb.descuento + '% de descuento (lo aplica Ara).' : '';
@@ -179,25 +212,50 @@
       filas.push(['Reserva', st.modalidad === 'suelta' ? 'Clase suelta' : 'Mes · ' + st.plan]);
       filas.push(['Precio', pesos(precio)]);
       filas.push(['Seña ahora', pesos(CONFIG.SENA)]);
-      filas.push(['Saldo a pagar en el estudio', '<span class="total">' + pesos(Math.max(0, precio - CONFIG.SENA)) + '</span>']);
+      filas.push(['Saldo a pagar en el estudio', el('span', { class: 'total' }, [pesos(Math.max(0, precio - CONFIG.SENA))])]);
     }
-    $('resumen').innerHTML = filas.map(function (f) { return '<div><span>' + esc(f[0]) + '</span><span>' + (f[1].indexOf('<span') === 0 ? f[1] : esc(f[1])) + '</span></div>'; }).join('');
+    poner('resumen', filas.map(function (f) { return el('div', {}, [el('span', {}, [f[0]]), el('span', {}, [f[1]])]); }));
+    prepararCaptcha();
   }
+
+  // ---------- Captcha opcional (Cloudflare Turnstile) ----------
+  var captchaListo = false;
+  function prepararCaptcha() {
+    if (!CONFIG.TURNSTILE_SITEKEY || PREVIEW || captchaListo) return;
+    captchaListo = true;
+    window.eterTurnstileOnload = function () {
+      window.turnstile.render('#turnstile', {
+        sitekey: CONFIG.TURNSTILE_SITEKEY, language: 'es',
+        callback: function (t) { st.turnstile = t; },
+        'expired-callback': function () { st.turnstile = ''; },
+        'error-callback': function () { st.turnstile = ''; }
+      });
+    };
+    $('turnstile').classList.remove('oculto');
+    var s = document.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=eterTurnstileOnload';
+    s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  }
+  function reiniciarCaptcha() { st.turnstile = ''; try { if (window.turnstile) window.turnstile.reset('#turnstile'); } catch (_) {} }
 
   // ---------- Paso 5 ----------
   function codigoNuevo() {
-    var abc = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = '';
-    var r = new Uint32Array(5); crypto.getRandomValues(r);
-    for (var i = 0; i < 5; i++) s += abc[r[i] % abc.length];
-    return 'ETR-' + s;
+    // Mismo formato que el servidor: RES- + 6 hexadecimales (los ID de clase usan ETR-).
+    var r = new Uint8Array(3); crypto.getRandomValues(r);
+    return 'RES-' + Array.prototype.map.call(r, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('').toUpperCase();
   }
   function reservar() {
-    var btn = $('reservar'); btn.disabled = true; $('err4').textContent = '';
+    var btn = $('reservar'); $('err4').textContent = '';
+    if (CONFIG.TURNSTILE_SITEKEY && !PREVIEW && !st.turnstile) { $('err4').textContent = 'Completá la verificación antes de reservar.'; return; }
+    btn.disabled = true;
     var body = {
       accion: 'reservar', claseId: st.clase.id, fecha: st.fecha, modalidad: st.modalidad, plan: st.plan || '',
       nombre: st.nombre, whatsapp: st.whatsapp, adulto: st.adulto, web: $('web').value,
+      acepto: $('acepto').checked === true,
       consentimientoMedicion: consent() ? 'Sí' : 'No'
     };
+    if (st.turnstile) body.turnstile = st.turnstile;
     // Para la API de Conversiones (aviso a Meta cuando Ara confirma): solo con consentimiento.
     if (consent()) { var m = medicion(); body.fbp = m.fbp; body.fbc = m.fbc; body.url = location.origin + location.pathname; body.ua = navigator.userAgent; }
     var p = PREVIEW
@@ -206,15 +264,16 @@
       : fetch(CONFIG.API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) }).then(function (r) { return r.json(); });
     p.then(function (res) {
       btn.disabled = false;
-      if (!res || !res.ok) { $('err4').textContent = (res && res.error) || 'No se pudo registrar la reserva. Probá de nuevo o escribinos por WhatsApp.'; return; }
+      if (!res || !res.ok) { reiniciarCaptcha(); $('err4').textContent = (res && typeof res.error === 'string' && res.error.slice(0, 200)) || 'No se pudo registrar la reserva. Probá de nuevo o escribinos por WhatsApp.'; return; }
       track('SolicitudReserva', 'solicitud_reserva', { content_name: st.clase.disciplina, content_category: st.modalidad });
       mostrarPago(res.codigo);
-    }).catch(function () { btn.disabled = false; $('err4').textContent = 'Sin conexión. Probá de nuevo o escribinos por WhatsApp.'; });
+    }).catch(function () { btn.disabled = false; reiniciarCaptcha(); $('err4').textContent = 'Sin conexión. Probá de nuevo o escribinos por WhatsApp.'; });
   }
   function mostrarPago(codigo) {
-    $('codigo').textContent = codigo;
+    $('codigo').textContent = String(codigo || '');
     var mod = st.modalidad === 'prueba' ? 'clase de prueba' : st.modalidad === 'suelta' ? 'clase suelta' : 'mes (' + st.plan + ')';
-    var msg = 'Hola Ara! Hice la reserva ' + codigo + ' en la web: ' + st.clase.disciplina + ', ' + fechaLarga(new Date(st.fecha + 'T12:00')) + ' ' + st.clase.inicio + ' hs, ' + mod + '. Te mando el comprobante de la seña de $10.000. Soy ' + st.nombre + '.';
+    var msg = 'Hola Ara! Hice la reserva ' + codigo + ' en la web: ' + st.clase.disciplina + ', ' + fechaLarga(new Date(st.fecha + 'T12:00')) + ' ' + st.clase.inicio + ' hs, ' + mod + '. Te mando el comprobante de la seña de $10.000.';
+    // Sin el nombre en el link: si GA4 tiene «clics salientes» activado, la URL completa no lleva datos personales.
     var a = $('waComprobante');
     a.href = CONFIG.WA + '?text=' + encodeURIComponent(msg);
     a.setAttribute('data-wa-clase', st.clase.disciplina);
@@ -244,12 +303,13 @@
       ir(3); return;
     }
     if (t.id === 'ir4') {
-      var nom = $('nombre').value.trim(), wa = $('whatsapp').value.replace(/[^\d+]/g, '');
-      if (nom.length < 3) { $('err3').textContent = 'Poné tu nombre y apellido.'; return; }
-      if (wa.replace(/\D/g, '').length < 8) { $('err3').textContent = 'Revisá el número de WhatsApp.'; return; }
-      if (!$('adultoBox').classList.contains('oculto') && $('adulto').value.trim().length < 3) { $('err3').textContent = 'Poné el nombre de la persona adulta responsable.'; return; }
+      var nom = $('nombre').value.replace(/\s+/g, ' ').trim(), wa = $('whatsapp').value.replace(/[^\d+]/g, ''), dig = wa.replace(/\D/g, '').length;
+      if (nom.length < 2 || nom.length > 60) { $('err3').textContent = 'Poné tu nombre y apellido (hasta 60 caracteres).'; return; }
+      if (dig < 8 || dig > 15) { $('err3').textContent = 'Revisá el número de WhatsApp.'; return; }
+      var ad = $('adulto').value.replace(/\s+/g, ' ').trim();
+      if (!$('adultoBox').classList.contains('oculto') && (ad.length < 2 || ad.length > 60)) { $('err3').textContent = 'Poné el nombre de la persona adulta responsable.'; return; }
       if (!$('acepto').checked) { $('err3').textContent = 'Tenés que aceptar las condiciones.'; return; }
-      $('err3').textContent = ''; st.nombre = nom; st.whatsapp = wa; st.adulto = $('adulto').value.trim();
+      $('err3').textContent = ''; st.nombre = nom; st.whatsapp = wa; st.adulto = $('adultoBox').classList.contains('oculto') ? '' : ad;
       pintarPaso4(); ir(4); return;
     }
     if (t.id === 'reservar') { reservar(); return; }
@@ -272,6 +332,6 @@
       }).observe($('grilla'));
     }
   }).catch(function () {
-    $('grilla').innerHTML = '<p class="nota">No pudimos cargar los horarios. <a href="' + CONFIG.WA + '">Escribinos por WhatsApp</a>.</p>';
+    poner('grilla', el('p', { class: 'nota' }, ['No pudimos cargar los horarios. ', el('a', { href: CONFIG.WA }, ['Escribinos por WhatsApp']), '.']));
   });
 })();
