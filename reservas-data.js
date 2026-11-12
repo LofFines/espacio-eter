@@ -25,7 +25,7 @@ window.ETER_PREVIEW_DATA = {
     { id: 'ETR-017', disciplina: 'Pole sport', profe: 'Sabri', dia: 'sábado', inicio: '10:30', fin: '11:30', nivel: 'inicial', cupo: 8, fijas: 3, prueba: true },
     { id: 'ETR-018', disciplina: 'Funcional', profe: 'Ara', dia: 'sábado', inicio: '10:30', fin: '11:30', nivel: '', cupo: 12, fijas: 4, prueba: true },
     { id: 'ETR-019', disciplina: 'Pole sport', profe: 'Ara', dia: 'sábado', inicio: '11:30', fin: '12:30', nivel: 'multi nivel', cupo: 8, fijas: 6, prueba: true },
-    { id: 'ETR-020', disciplina: 'Acro infantil', profe: 'Lucila', dia: 'sábado', inicio: '11:30', fin: '12:30', nivel: '', cupo: 12, fijas: 4, prueba: true }
+    { id: 'ETR-020', disciplina: 'Acro infantil', profe: 'Ludmila', dia: 'sábado', inicio: '11:30', fin: '12:30', nivel: '', cupo: 12, fijas: 4, prueba: true }
   ],
   precios: [
     { disciplina: 'Pole sport', plan: '1 vez por semana', precio: 45000 },
